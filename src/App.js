@@ -1,7 +1,36 @@
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import {
+  Root,
+  Error,
+  Home,
+  About,
+  Products,
+  SingleProduct,
+  Cart,
+} from './pages';
+
 function App() {
-  return (
-    <div className="font-bold text-red-500 text-2xl">HELLO FURNI STORE</div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Root />,
+      errorElement: <Error />,
+      children: [
+        { index: true, element: <Home /> },
+        { path: 'about', element: <About /> },
+        { path: 'cart', element: <Cart /> },
+        {
+          path: 'products',
+          element: <Products />,
+          // children: [{ path: '/products/one', element: <SingleProduct /> }],
+        },
+        { path: 'SingleProduct', element: <SingleProduct /> },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
 export default App;
