@@ -2,7 +2,14 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { BsArrowRightShort } from 'react-icons/bs';
 import ItemCart from '../components/ItemCart';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 const Cart = () => {
+  // set up the subscription for cart
+  const cart = useSelector((state) => state.cart);
+  const cartDispatch = useDispatch();
+  console.log(cart);
+
   return (
     <section className="max-w-7xl mx-auto text-2xl">
       {/* Cart header */}

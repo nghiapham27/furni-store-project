@@ -8,6 +8,7 @@ import Brand from './Brand';
 import ProductCard from './ProductCard';
 import ItemtCart from './ItemCart';
 import ProductsFilter from './ProductsFilter';
+import ProductsSort from './ProductsSort';
 
 export {
   MainWrapper,
@@ -20,4 +21,5 @@ export {
   ProductCard,
   ItemtCart,
   ProductsFilter,
+  ProductsSort,
 };
