@@ -1,20 +1,26 @@
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { FaShoppingCart } from 'react-icons/fa';
 import { BsArrowRightShort } from 'react-icons/bs';
 import ItemCart from '../components/ItemCart';
 
-import { useSelector, useDispatch } from 'react-redux';
-
 const Cart = () => {
   // set up the subscription for cart
-  const cart = useSelector((state) => state.cart);
+  const { list, totalQty, totalPrice } = useSelector((state) => state.cart);
   const cartDispatch = useDispatch();
-  console.log(cart);
 
   return (
     <section className="max-w-7xl mx-auto text-2xl">
       {/* Cart header */}
       <div className="flex items-center justify-center">
-        <h1 className="text-2xl font-bold pr-4">Your Cart</h1>
+        {list.length > 0 ? (
+          <h1 className="text-2xl font-bold pr-4">Your Cart</h1>
+        ) : (
+          <h1 className="text-2xl font-bold pr-4 text-red-500">
+            Your Cart is Empty
+          </h1>
+        )}
         <span>
           <FaShoppingCart size={30} />
         </span>
@@ -31,9 +37,10 @@ const Cart = () => {
             <p>Subtotal</p>
           </div>
           {/* items list*/}
-          <ul className="pt-2">
-            <ItemCart />
-            <ItemCart />
+          <ul className="">
+            {list.map((item) => (
+              <ItemCart key={item.id} itemData={item} />
+            ))}
           </ul>
         </div>
       </div>
@@ -41,21 +48,21 @@ const Cart = () => {
       {/* total amount & payment */}
       <div className="w-full px-2 py-5 text-base grid md:grid-cols-2">
         {/* shopping button */}
-        <div className="">
-          <button className="btn-primary">
+        <div className="flex h-min">
+          <Link to="/products" className="btn-primary">
             Continue Shopping <BsArrowRightShort size={20} />
-          </button>
+          </Link>
         </div>
         {/* total amount */}
         <div className="py-4 flex-col justify-between">
           <p className="flex justify-between border-t border-t-gray-500">
-            Subtotal <span>400$</span>
+            Subtotal <span>$ {totalPrice}</span>
           </p>
           <p className="flex justify-between border-b border-b-gray-500">
-            Shipping <span>5$</span>
+            Shipping <span>shipping fee</span>
           </p>
           <p className="uppercase font-bold pt-4 flex justify-between">
-            Total <span>405$</span>
+            Total <span>$ {totalPrice}</span>
           </p>
         </div>
       </div>

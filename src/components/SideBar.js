@@ -4,10 +4,13 @@ import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 
 import { links } from '../utils/constants';
+import { useSelector } from 'react-redux';
 
 const SideBar = ({ onSideBar, sideBar }) => {
+  const { totalQty } = useSelector((state) => state.cart);
+
   return (
-    <div>
+    <>
       {/* // overlay */}
       {sideBar && (
         <div
@@ -36,7 +39,7 @@ const SideBar = ({ onSideBar, sideBar }) => {
             return (
               <li
                 key={id}
-                className="w-min pb-4 last:pb-0"
+                className="w-min pb-4 last:pb-0 hover:underline"
                 onClick={() => onSideBar()}
               >
                 <Link to={url}>{text}</Link>
@@ -50,8 +53,8 @@ const SideBar = ({ onSideBar, sideBar }) => {
             <span>Cart</span>
             <div className="relative">
               <FaShoppingCart size={30} />
-              <span className="absolute -top-4 left-4 text-red-500 bg-yellow-300 rounded-full text-xl h-8 w-8 flex items-center justify-center">
-                10
+              <span className="absolute -top-4 left-4 text-white bg-red-600 rounded-full text-xl h-8 w-8 flex items-center justify-center">
+                {totalQty}
               </span>
             </div>
           </Link>
@@ -61,7 +64,7 @@ const SideBar = ({ onSideBar, sideBar }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default SideBar;

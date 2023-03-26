@@ -24,9 +24,11 @@ function App() {
         {
           path: 'products',
           element: <Products />,
-          // children: [{ path: '/products/one', element: <SingleProduct /> }],
         },
-        { path: 'SingleProduct', element: <SingleProduct /> },
+        {
+          path: '/products/:productId',
+          element: <SingleProduct />,
+        },
       ],
     },
   ]);

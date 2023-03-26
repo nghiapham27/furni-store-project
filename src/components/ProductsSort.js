@@ -1,16 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { IoGrid, IoList } from 'react-icons/io5';
-import { MdKeyboardArrowDown } from 'react-icons/md';
 
 import { sortBy } from '../utils/constants';
+import { productsAction } from '../store/products';
 
-import { filterAction } from '../store/filter';
-import { useState } from 'react';
-
-const ProductsSort = ({ productsList, setDisplay }) => {
+const ProductsSort = () => {
   // set up filterInput subscription
-  const { sortType } = useSelector((state) => state.filter.sortType);
+  const { filterProducts, sortType } = useSelector((state) => state.products);
   const filterDispatch = useDispatch();
 
   return (
@@ -21,17 +18,19 @@ const ProductsSort = ({ productsList, setDisplay }) => {
           <IoGrid
             size={25}
             className="cursor-pointer border border-black rounded-sm"
-            onClick={() => setDisplay('grid')}
+            onClick={() => filterDispatch(productsAction.display('grid'))}
           />
           <IoList
             size={25}
             className="cursor-pointer border border-black rounded-sm mx-2"
-            onClick={() => setDisplay('list')}
+            onClick={() => filterDispatch(productsAction.display('list'))}
           />
         </p>
         {/* The numer of products showed */}
         <p className="font-bold text-gray-500">
-          <span className="font-bold text-red-500">{productsList.length} </span>
+          <span className="font-bold text-red-500">
+            {filterProducts.length}{' '}
+          </span>
           products found
         </p>
       </div>
@@ -46,7 +45,7 @@ const ProductsSort = ({ productsList, setDisplay }) => {
           className="bg-gray-300 outline-none border rounded-md cursor-pointer"
           value={sortType}
           onChange={(e) => {
-            filterDispatch(filterAction.sort(e.target.value));
+            filterDispatch(productsAction.sort(e.target.value));
           }}
         >
           {sortBy.map((sort) => {

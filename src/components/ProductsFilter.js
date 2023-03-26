@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
 
-import { productsData } from '../utils/Draft-Data';
 import FilterDropdown from './FilterDropdown';
-import { filterAction } from '../store/filter';
+import { productsAction } from '../store/products';
 
-const ProductsFilter = ({ onFilter }) => {
+const ProductsFilter = () => {
   // set up filterInput subscription
-  const { searchName, category, company, color, ship, price } = useSelector(
-    (state) => state.filter
+  const { productsData, filterInput, maxPrice } = useSelector(
+    (state) => state.products
   );
+  const { searchName, category, company, color, ship, price } = filterInput;
   // dispatch actions
   const filterDispatch = useDispatch();
 
@@ -33,7 +33,10 @@ const ProductsFilter = ({ onFilter }) => {
               className=" w-full bg-gray-200 rounded-full placeholder:text-sm py-1 pl-7 outline-none border hover:border-amber-200 focus:border-amber-400 focus:bg-gray-50"
               onChange={(e) =>
                 filterDispatch(
-                  filterAction.search(e.target.value.toLowerCase())
+                  productsAction.setFilter({
+                    type: 'searchName',
+                    value: e.target.value,
+                  })
                 )
               }
             />
@@ -50,7 +53,12 @@ const ProductsFilter = ({ onFilter }) => {
                   key={item}
                   className="flex justify-between items-center cursor-pointer pb-2"
                   onClick={() => {
-                    filterDispatch(filterAction.category(item));
+                    filterDispatch(
+                      productsAction.setFilter({
+                        type: 'category',
+                        value: item,
+                      })
+                    );
                   }}
                 >
                   {item.split('')[0].toUpperCase() + item.slice(1)}
@@ -70,7 +78,12 @@ const ProductsFilter = ({ onFilter }) => {
                   key={item}
                   className="flex justify-between items-center cursor-pointer pb-2"
                   onClick={() => {
-                    filterDispatch(filterAction.company(item));
+                    filterDispatch(
+                      productsAction.setFilter({
+                        type: 'company',
+                        value: item,
+                      })
+                    );
                   }}
                 >
                   {item.split('')[0].toUpperCase() + item.slice(1)}
@@ -93,7 +106,12 @@ const ProductsFilter = ({ onFilter }) => {
                       item === 'all' ? 'items-start' : 'items-center'
                     } cursor-pointer`}
                     onClick={() => {
-                      filterDispatch(filterAction.color(item));
+                      filterDispatch(
+                        productsAction.setFilter({
+                          type: 'color',
+                          value: item,
+                        })
+                      );
                     }}
                   >
                     <div
@@ -117,9 +135,15 @@ const ProductsFilter = ({ onFilter }) => {
               <input
                 id="ship"
                 type="checkbox"
-                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                onClick={() => {
-                  filterDispatch(filterAction.ship());
+                checked={ship ? true : false}
+                className="h-4 w-4 rounded border-gray-300"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  filterDispatch(
+                    productsAction.setFilter({
+                      type: 'ship',
+                    })
+                  );
                 }}
               />
               <label
@@ -139,13 +163,19 @@ const ProductsFilter = ({ onFilter }) => {
             <input
               id="price-range"
               type="range"
+              // defaultValue={maxPrice + 10}
               value={price}
               min="0"
-              max="5000"
-              step="100"
+              max={maxPrice + 10}
+              step="10"
               className="w-full h-2 bg-gray-300 rounded-lg cursor-pointer outline-none mx-2 md:mx-0 md:my-2"
               onChange={(e) => {
-                filterDispatch(filterAction.price(+e.target.value));
+                filterDispatch(
+                  productsAction.setFilter({
+                    type: 'price',
+                    value: +e.target.value,
+                  })
+                );
               }}
             />
             <p className="min-w-[60px] md:text-left">{`$ ${price.toLocaleString()}`}</p>
@@ -155,7 +185,7 @@ const ProductsFilter = ({ onFilter }) => {
         <div className="w-full max-w-[300px] mx-auto flex justify-center">
           <p
             className="cursor-pointer underline active:text-amber-300"
-            onClick={() => filterDispatch(filterAction.reset())}
+            onClick={() => filterDispatch(productsAction.clearFilter())}
           >
             Clear All Filters
           </p>
