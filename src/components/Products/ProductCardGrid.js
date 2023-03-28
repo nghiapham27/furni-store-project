@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { FaCartPlus } from 'react-icons/fa';
 
-import { cartAction } from '../store/cart';
+import { cartAction } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 

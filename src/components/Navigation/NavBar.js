@@ -1,5 +1,5 @@
 import { FaBars } from 'react-icons/fa';
-import { Brand, NavList, NavUser, SideBar } from '../components';
+import { Brand, NavList, NavUser, SideBar } from '..';
 import { useState } from 'react';
 
 const NavBar = () => {

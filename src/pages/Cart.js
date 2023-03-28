@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { FaShoppingCart } from 'react-icons/fa';
 import { BsArrowRightShort } from 'react-icons/bs';
-import ItemCart from '../components/ItemCart';
+import { ItemCart } from '../components';
 
 const Cart = () => {
   // set up the subscription for cart

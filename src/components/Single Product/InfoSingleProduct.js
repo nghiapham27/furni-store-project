@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { singleProductAction } from '../store/singleProduct';
-import { cartAction } from '../store/cart';
+import { singleProductAction } from '../../store/singleProduct';
+import { cartAction } from '../../store/cart';
 
-import { StarsReview } from '../components';
+import { StarsReview } from '..';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
 
 const InfoSingleProduct = () => {

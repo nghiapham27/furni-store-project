@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { IoGrid, IoList } from 'react-icons/io5';
 
-import { sortBy } from '../utils/constants';
-import { productsAction } from '../store/products';
+import { sortBy } from '../../utils/constants';
+import { productsAction } from '../../store/products';
 
 const ProductsSort = () => {
   // set up filterInput subscription

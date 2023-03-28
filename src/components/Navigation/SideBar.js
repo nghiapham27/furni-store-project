@@ -1,9 +1,9 @@
-import { Brand } from '../components';
+import { Brand } from '..';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 
-import { links } from '../utils/constants';
+import { links } from '../../utils/constants';
 import { useSelector } from 'react-redux';
 
 const SideBar = ({ onSideBar, sideBar }) => {

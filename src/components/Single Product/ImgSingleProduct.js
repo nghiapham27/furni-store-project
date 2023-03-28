@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { singleProductAction } from '../store/singleProduct';
+import { singleProductAction } from '../../store/singleProduct';
 
 const ImgSingleProduct = ({ images }) => {
   const { productData, activeImgId, loading } = useSelector(

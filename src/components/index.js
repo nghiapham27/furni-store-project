@@ -1,22 +1,22 @@
-import MainWrapper from './MainWrapper';
-import NavBar from './NavBar';
-import NavList from './NavList';
-import NavUser from './NavUser';
-import SideBar from './SideBar';
-import Hero from './Hero';
+import MainWrapper from './UI/MainWrapper';
+import NavBar from './Navigation/NavBar';
+import NavList from './Navigation/NavList';
+import NavUser from './Navigation/NavUser';
+import SideBar from './Navigation/SideBar';
+import Hero from './Home/Hero';
 import Footer from './Footer';
-import FeaturedProducts from './FeaturedProducts';
-import Brand from './Brand';
-import ItemtCart from './ItemCart';
-import ProductsDisplay from './ProductsDisplay';
-import ProductCardGrid from './ProductCardGrid';
-import ProductCardList from './ProductCardList';
-import ProductsFilter from './ProductsFilter';
-import ProductsSort from './ProductsSort';
-import StarsReview from './StarsReview';
-import ImgSingleProduct from './ImgSingleProduct';
-import InfoSingleProduct from './InfoSingleProduct';
-import Loading from './Loading';
+import FeaturedProducts from './Home/FeaturedProducts';
+import Brand from './UI/Brand';
+import ItemCart from './Cart/ItemCart';
+import ProductsDisplay from './Products/ProductsDisplay';
+import ProductCardGrid from './Products/ProductCardGrid';
+import ProductCardList from './Products/ProductCardList';
+import ProductsFilter from './Products/ProductsFilter';
+import ProductsSort from './Products/ProductsSort';
+import StarsReview from './Single Product/StarsReview';
+import ImgSingleProduct from './Single Product/ImgSingleProduct';
+import InfoSingleProduct from './Single Product/InfoSingleProduct';
+import Loading from './UI/Loading';
 
 export {
   MainWrapper,
@@ -28,7 +28,7 @@ export {
   Footer,
   FeaturedProducts,
   Brand,
-  ItemtCart,
+  ItemCart,
   ProductsDisplay,
   ProductCardGrid,
   ProductCardList,
