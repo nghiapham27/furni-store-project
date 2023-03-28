@@ -7,8 +7,9 @@ import ItemCart from '../components/ItemCart';
 
 const Cart = () => {
   // set up the subscription for cart
-  const { list, totalQty, totalPrice } = useSelector((state) => state.cart);
-  const cartDispatch = useDispatch();
+  const { list, shippingFee, subTotal, totalPrice, totalQty } = useSelector(
+    (state) => state.cart
+  );
 
   return (
     <section className="max-w-7xl mx-auto text-2xl">
@@ -39,7 +40,7 @@ const Cart = () => {
           {/* items list*/}
           <ul className="">
             {list.map((item) => (
-              <ItemCart key={item.id} itemData={item} />
+              <ItemCart key={item.id + item.color} itemData={item} />
             ))}
           </ul>
         </div>
@@ -56,13 +57,20 @@ const Cart = () => {
         {/* total amount */}
         <div className="py-4 flex-col justify-between">
           <p className="flex justify-between border-t border-t-gray-500">
-            Subtotal <span>$ {totalPrice}</span>
+            Subtotal <span>$ {subTotal.toFixed(2)}</span>
           </p>
           <p className="flex justify-between border-b border-b-gray-500">
-            Shipping <span>shipping fee</span>
+            Shipping{' '}
+            <span>
+              ${' '}
+              {shippingFee.toLocaleString('en', {
+                useGrouping: false,
+                minimumFractionDigits: 2,
+              })}
+            </span>
           </p>
           <p className="uppercase font-bold pt-4 flex justify-between">
-            Total <span>$ {totalPrice}</span>
+            Total <span>$ {totalPrice.toFixed(2)}</span>
           </p>
         </div>
       </div>

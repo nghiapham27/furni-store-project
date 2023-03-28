@@ -15,6 +15,7 @@ import ProductsFilter from './ProductsFilter';
 import ProductsSort from './ProductsSort';
 import StarsReview from './StarsReview';
 import ImgSingleProduct from './ImgSingleProduct';
+import InfoSingleProduct from './InfoSingleProduct';
 import Loading from './Loading';
 
 export {
@@ -35,5 +36,6 @@ export {
   ProductsSort,
   StarsReview,
   ImgSingleProduct,
+  InfoSingleProduct,
   Loading,
 };

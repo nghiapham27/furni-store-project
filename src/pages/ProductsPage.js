@@ -18,7 +18,7 @@ const ProductsPage = () => {
       <div className="col-span-1">
         <ProductsFilter />
       </div>
-      <div className=" md:col-span-3">
+      <div className="w-full md:col-span-3">
         <ProductsSort />
         <ProductsDisplay />
       </div>

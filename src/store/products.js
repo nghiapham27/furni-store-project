@@ -77,6 +77,9 @@ const productsSlice = createSlice({
       state.productsData = payload;
       state.filterProducts = payload;
       findMaxPrice(state);
+      Object.keys(state.filterInput).map(
+        (key) => (state.filterInput[key] = initialProducts.filterInput[key])
+      );
       state.filterInput.price = state.maxPrice;
     },
 

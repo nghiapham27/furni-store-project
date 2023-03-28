@@ -16,7 +16,7 @@ const ProductCardList = ({ singleProductData }) => {
   const cartDispatch = useDispatch();
 
   return (
-    <div className="w-full shadow-xl rounded-xl mx-auto hover:scale-105">
+    <div className="w-full shadow-xl rounded-xl mx-auto overflow-hidden hover:scale-[102%] transition-all duration-500">
       <Link
         to={id}
         className="bg-slate-100 overflow-hidden grid grid-cols-[150px_1fr]"
@@ -33,10 +33,15 @@ const ProductCardList = ({ singleProductData }) => {
             {/* title & price */}
             <p className="text-left bg-slate-100 pr-4">
               <span className="font-bold text-xl  ">
-                {name.split('')[0].toUpperCase() + name.slice(1)}
+                {name
+                  .split(' ')
+                  .map(
+                    (word) => word.split('')[0].toUpperCase() + word.slice(1)
+                  )
+                  .join(' ')}
               </span>
-              <br />
-              <span>{`$ ${(+price).toLocaleString()}`}</span>
+              <br />$
+              <span className="underline">{` ${(+price).toLocaleString()}`}</span>
             </p>
 
             {/* tags */}
@@ -65,16 +70,6 @@ const ProductCardList = ({ singleProductData }) => {
         {popup && (
           <p className="text-sm text-slate-500">Item added to your cart</p>
         )}
-        <button className="px-4">
-          <FaCartPlus
-            size={25}
-            onClick={() => {
-              setPopup(true);
-              cartDispatch(cartAction.add(singleProductData));
-              setTimeout(() => setPopup(false), 1000);
-            }}
-          />
-        </button>
         <button>
           <MdFavoriteBorder size={25} />
           {/* <MdFavorite size={25} /> */}

@@ -10,4 +10,7 @@
   .btn-nav {
     @apply flex items-center px-4 py-1 bg-white rounded-full border-none shadow-sm hover:text-gray-200 hover:bg-black;
   }
+  .btn-disabled {
+    @apply flex items-center py-1 px-5 rounded-full bg-gray-200 text-gray-500;
+  }
 }

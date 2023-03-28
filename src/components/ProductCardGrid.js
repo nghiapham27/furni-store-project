@@ -16,7 +16,7 @@ const ProductCardGrid = ({ singleProductData }) => {
 
   // Card of Grid layout
   return (
-    <div className="w-full shadow-xl rounded-xl mx-auto hover:scale-105">
+    <div className="w-full shadow-xl rounded-xl mx-auto hover:scale-105 transition-all duration-500">
       <Link to={id}>
         {/* image */}
         <img
@@ -44,10 +44,13 @@ const ProductCardGrid = ({ singleProductData }) => {
         {/* title & price */}
         <p className="text-center bg-slate-100 py-2">
           <span className="font-bold">
-            {name.split('')[0].toUpperCase() + name.slice(1)}
+            {name
+              .split(' ')
+              .map((word) => word.split('')[0].toUpperCase() + word.slice(1))
+              .join(' ')}
           </span>
-          <br />
-          <span>{`$ ${(+price).toLocaleString()}`}</span>
+          <br />$
+          <span className="underline">{` ${(+price).toLocaleString()}`}</span>
         </p>
       </Link>
 
@@ -56,16 +59,6 @@ const ProductCardGrid = ({ singleProductData }) => {
         {popup && (
           <p className="text-sm text-slate-500">Item added to your cart!</p>
         )}
-        <button className="px-4">
-          <FaCartPlus
-            size={25}
-            onClick={() => {
-              setPopup(true);
-              cartDispatch(cartAction.add(singleProductData));
-              setTimeout(() => setPopup(false), 1000);
-            }}
-          />
-        </button>
         <button>
           <MdFavoriteBorder size={25} />
           {/* <MdFavorite size={25} /> */}
