@@ -19,11 +19,3 @@ const RootPage = () => {
   );
 };
 export default RootPage;
-
-// save to local storage
-// finalize cart layout
-// Thumbnails (it's the same img link from API)
-
-// stick navigation
-// animation in homepage
-// popup when item added to cart (after item added successful to database)

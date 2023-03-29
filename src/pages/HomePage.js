@@ -1,11 +1,12 @@
-import { Hero, FeaturedProducts } from '../components';
+import { Hero, Features, FeaturedProducts, Newsletter } from '../components';
 
 const HomePage = () => {
   return (
     <section>
-      <h1 className="text-xl">Home Page</h1>
       <Hero />
+      <Features />
       <FeaturedProducts />
+      <Newsletter />
     </section>
   );
 };
