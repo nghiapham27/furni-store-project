@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/furni-store-project/static/css/main.2ee2c271.css",
-    "main.js": "/furni-store-project/static/js/main.e836f535.js",
+    "main.js": "/furni-store-project/static/js/main.a7999da5.js",
     "static/js/787.daf31129.chunk.js": "/furni-store-project/static/js/787.daf31129.chunk.js",
     "static/media/hero.jpg": "/furni-store-project/static/media/hero.b76fad283a6dbb15629b.jpg",
     "static/media/feature-2.jpg": "/furni-store-project/static/media/feature-2.c82f280206935234fee5.jpg",
     "static/media/feature-1.jpg": "/furni-store-project/static/media/feature-1.60ea7e1afa9b88e0ac8b.jpg",
     "index.html": "/furni-store-project/index.html",
     "main.2ee2c271.css.map": "/furni-store-project/static/css/main.2ee2c271.css.map",
-    "main.e836f535.js.map": "/furni-store-project/static/js/main.e836f535.js.map",
+    "main.a7999da5.js.map": "/furni-store-project/static/js/main.a7999da5.js.map",
     "787.daf31129.chunk.js.map": "/furni-store-project/static/js/787.daf31129.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2ee2c271.css",
-    "static/js/main.e836f535.js"
+    "static/js/main.a7999da5.js"
   ]
 }
