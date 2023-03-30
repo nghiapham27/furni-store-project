@@ -4,7 +4,7 @@ import Stats from './Stats';
 
 const Hero = () => {
   return (
-    <div className=" w-full md:h-[80vh] h-[500px] bg-hero bg-center bg-cover mb-40 md:mb-28 rounded-xl">
+    <div className=" w-full md:h-[80vh] h-[500px] bg-hero bg-center bg-cover  rounded-xl">
       <div className="w-full h-full text-center flex flex-col items-center justify-center bg-transparent/40 rounded-xl">
         <h1 className="text-white font-bold text-3xl md:text-4xl lg:text-5xl">
           Creative Home Simpify <br /> Your Furniture

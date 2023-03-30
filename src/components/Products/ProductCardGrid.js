@@ -16,8 +16,8 @@ const ProductCardGrid = ({ singleProductData }) => {
 
   // Card of Grid layout
   return (
-    <div className="w-full shadow-xl rounded-xl mx-auto hover:scale-105 transition-all duration-500">
-      <Link to={id}>
+    <div className="w-full shadow-xl rounded-2xl mx-auto hover:border-amber-300 border-4 border-transparent hover:-translate-y-1   transition-all duration-500 overflow-hidden">
+      <Link to={`/products/${id}`}>
         {/* image */}
         <img
           src={image}

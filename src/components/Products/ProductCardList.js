@@ -16,7 +16,7 @@ const ProductCardList = ({ singleProductData }) => {
   const cartDispatch = useDispatch();
 
   return (
-    <div className="w-full shadow-xl rounded-xl mx-auto overflow-hidden hover:scale-[102%] transition-all duration-500">
+    <div className="w-full shadow-xl rounded-2xl mx-auto overflow-hidden hover:border-amber-300 border-4 border-transparent hover:-translate-y-1 transition-all duration-500">
       <Link
         to={id}
         className="bg-slate-100 overflow-hidden grid grid-cols-[150px_1fr]"
