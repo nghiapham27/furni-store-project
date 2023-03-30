@@ -8,7 +8,7 @@ const ProductsDisplay = () => {
   return (
     <>
       {loading ? (
-        <Loading />
+        <Loading text={'Loading Products Data...'} />
       ) : (
         <ul
           className={

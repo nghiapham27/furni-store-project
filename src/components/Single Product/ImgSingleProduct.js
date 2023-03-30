@@ -17,7 +17,7 @@ const ImgSingleProduct = ({ images }) => {
     <>
       {loading ? (
         <div className="col-span-2">
-          <Loading />
+          <Loading text={'Loading Data...'} />
         </div>
       ) : (
         <div className="w-full  ">

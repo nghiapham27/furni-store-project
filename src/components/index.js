@@ -20,8 +20,7 @@ import StarsReview from './Single Product/StarsReview';
 import ImgSingleProduct from './Single Product/ImgSingleProduct';
 import InfoSingleProduct from './Single Product/InfoSingleProduct';
 import Loading from './UI/Loading';
-
-import TestSwiper from './TestSwiper';
+import BackToTop from './UI/BackToTop';
 
 export {
   MainWrapper,
@@ -46,5 +45,5 @@ export {
   ImgSingleProduct,
   InfoSingleProduct,
   Loading,
-  TestSwiper,
+  BackToTop,
 };

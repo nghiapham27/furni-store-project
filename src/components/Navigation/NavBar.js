@@ -1,14 +1,26 @@
 import { FaBars } from 'react-icons/fa';
 import { Brand, NavList, NavUser, SideBar } from '..';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NavBar = () => {
   const [sideBar, setSideBar] = useState(false);
+  const [stickyNav, setStickyNav] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      const yPos = window.scrollY;
+      yPos > 100 && setStickyNav(true);
+    });
+  }, []);
 
   return (
     <>
       {/*Main Nav */}
-      <nav className="w-full h-[10vh] bg-gray-200/50 shadow-md z-10">
+      <nav
+        className={`w-full bg-gray-200 shadow-md z-10 ${
+          stickyNav ? 'sticky top-0' : ''
+        }`}
+      >
         <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-3 px-4">
           <Brand />
           <NavList />

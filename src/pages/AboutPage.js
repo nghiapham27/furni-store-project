@@ -1,12 +1,5 @@
-import { TestSwiper } from '../components';
 import { Loading } from '../components';
-
 const AboutPage = () => {
-  return (
-    <section>
-      <TestSwiper />
-      {/* <Loading /> */}
-    </section>
-  );
+  return <section>{/* <Loading /> */}</section>;
 };
 export default AboutPage;

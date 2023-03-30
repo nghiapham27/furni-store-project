@@ -1,10 +1,10 @@
 import { Spin } from 'antd';
 
-const Loading = () => {
+const Loading = ({ text }) => {
   return (
     <div className="text-2xl text-center">
       <Spin size="large" />
-      <p className="text-amber-600">Loading...</p>
+      <p className="text-amber-600">{text}</p>
     </div>
   );
 };
