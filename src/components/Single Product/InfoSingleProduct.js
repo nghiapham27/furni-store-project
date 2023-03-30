@@ -57,7 +57,13 @@ const InfoSingleProduct = () => {
               {name.split('')[0].toUpperCase() + name.slice(1)}
             </h1>
             <StarsReview numStars={stars} reviews={reviews} />
-            <p className="font-bold text-gray-500">$ {price}</p>
+            <p className="font-bold text-gray-500">
+              {price.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2,
+              })}
+            </p>
           </div>
 
           {/* Description */}

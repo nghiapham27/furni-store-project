@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
@@ -22,5 +21,4 @@ const RootPage = () => {
 };
 export default RootPage;
 
-// fix sidebar, backtotop
 // button outline

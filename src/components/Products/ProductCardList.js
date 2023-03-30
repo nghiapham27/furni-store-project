@@ -32,7 +32,7 @@ const ProductCardList = ({ singleProductData }) => {
           <div className="flex flex-wrap w-full items-start ">
             {/* title & price */}
             <p className="text-left bg-slate-100 pr-4">
-              <span className="font-bold text-xl  ">
+              <span className="font-bold text-xl">
                 {name
                   .split(' ')
                   .map(
@@ -40,8 +40,15 @@ const ProductCardList = ({ singleProductData }) => {
                   )
                   .join(' ')}
               </span>
-              <br />$
-              <span className="underline">{` ${(+price).toLocaleString()}`}</span>
+              <br />
+              <span className="text-slate-500 font-semibold">{` ${(+price).toLocaleString(
+                'en-US',
+                {
+                  style: 'currency',
+                  currency: 'USD',
+                  maximumFractionDigits: 2,
+                }
+              )}`}</span>
             </p>
 
             {/* tags */}

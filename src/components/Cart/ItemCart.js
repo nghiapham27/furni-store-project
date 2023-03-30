@@ -34,13 +34,23 @@ const ItemCart = ({ itemData }) => {
             style={{ backgroundColor: `${color}` }}
           ></div>
           <span className="text-slate-500 md:hidden">
-            $ {+price.toFixed(2)}
+            {price.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              maximumFractionDigits: 2,
+            })}
           </span>
         </div>
       </Link>
 
       {/* md:price */}
-      <div className="hidden text-center md:block">$ {price.toFixed(2)}</div>
+      <div className="hidden text-center md:block">
+        {price.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 2,
+        })}
+      </div>
 
       {/* quantity & subtotal */}
       <div className="text-center px-3 relative">
@@ -72,13 +82,21 @@ const ItemCart = ({ itemData }) => {
           </button>
         </div>
         <span className="text-gray-400 md:hidden">
-          $ {+subTotal.toFixed(2)}
+          {subTotal.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            maximumFractionDigits: 2,
+          })}
         </span>
       </div>
 
       {/* md:subtotal */}
       <div className="hidden text-center md:block">
-        $ {+subTotal.toFixed(2)}
+        {subTotal.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD',
+          maximumFractionDigits: 2,
+        })}
       </div>
 
       {/* delete */}

@@ -60,7 +60,7 @@ const FeaturedProductsSwiper = () => {
             clickable: true,
           }}
           modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          className="w-full mt-10"
+          className="w-full max-w-[1000px] mt-10"
         >
           {featuredProductsList.map((product) => {
             return (

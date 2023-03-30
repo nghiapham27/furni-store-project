@@ -17,7 +17,7 @@ const NavBar = () => {
     <>
       {/*Main Nav */}
       <nav
-        className={`w-full bg-gray-200 shadow-md z-10 ${
+        className={`relative w-full bg-gray-200 shadow-md z-10 ${
           stickyNav ? 'sticky top-0' : ''
         }`}
       >

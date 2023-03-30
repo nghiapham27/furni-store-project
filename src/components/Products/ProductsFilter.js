@@ -178,7 +178,14 @@ const ProductsFilter = () => {
                 );
               }}
             />
-            <p className="min-w-[60px] md:text-left">{`$ ${price.toLocaleString()}`}</p>
+            <p className="min-w-[60px] md:text-left">{`${price.toLocaleString(
+              'en-US',
+              {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 0,
+              }
+            )}`}</p>
           </div>
         </div>
         {/* Clear Filter */}

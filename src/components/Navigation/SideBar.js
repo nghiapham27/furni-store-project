@@ -14,13 +14,13 @@ const SideBar = ({ onSideBar, sideBar }) => {
       {/* // overlay */}
       {sideBar && (
         <div
-          className="absolute top-0 left-0 h-screen w-screen bg-black/50 z-10"
+          className="fixed top-0 left-0 h-full min-h-screen w-full bg-black/50 z-10"
           onClick={() => onSideBar()}
         ></div>
       )}
       {/* sidebar */}
       <div
-        className={`absolute top-0 bg-gray-50 h-screen w-[320px] p-4 border border-gray-400 z-20 transition-all duration-1000 ${
+        className={` fixed top-0 bg-gray-50 h-screen w-[320px] p-4 border border-gray-400 z-20 transition-all duration-1000 ${
           sideBar ? 'left-0' : '-left-[100%]'
         } `}
       >

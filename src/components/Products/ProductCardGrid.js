@@ -41,14 +41,21 @@ const ProductCardGrid = ({ singleProductData }) => {
 
         {/* title & price */}
         <p className="text-center bg-slate-100 py-2">
-          <span className="font-bold">
+          <span className="font-bold text-xl">
             {name
               .split(' ')
               .map((word) => word.split('')[0].toUpperCase() + word.slice(1))
               .join(' ')}
           </span>
-          <br />$
-          <span className="underline">{` ${(+price).toLocaleString()}`}</span>
+          <br />
+          <span className="text-slate-500 font-semibold">{` ${(+price).toLocaleString(
+            'en-US',
+            {
+              style: 'currency',
+              currency: 'USD',
+              maximumFractionDigits: 2,
+            }
+          )}`}</span>
         </p>
       </Link>
 

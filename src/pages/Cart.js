@@ -7,9 +7,11 @@ import { ItemCart } from '../components';
 
 const Cart = () => {
   // set up the subscription for cart
-  const { list, shippingFee, subTotal, totalPrice, totalQty } = useSelector(
+  const { list, shippingFee, subTotal, totalPrice } = useSelector(
     (state) => state.cart
   );
+
+  console.log(totalPrice);
 
   return (
     <section className="max-w-7xl mx-auto text-2xl">
@@ -57,20 +59,34 @@ const Cart = () => {
         {/* total amount */}
         <div className="py-4 flex-col justify-between">
           <p className="flex justify-between border-t border-t-gray-500">
-            Subtotal <span>$ {subTotal.toFixed(2)}</span>
+            Subtotal{' '}
+            <span className="text-xl">
+              {subTotal.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2,
+              })}
+            </span>
           </p>
           <p className="flex justify-between border-b border-b-gray-500">
             Shipping{' '}
-            <span>
-              ${' '}
-              {shippingFee.toLocaleString('en', {
-                useGrouping: false,
-                minimumFractionDigits: 2,
+            <span className="text-xl">
+              {shippingFee.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2,
               })}
             </span>
           </p>
           <p className="uppercase font-bold pt-4 flex justify-between">
-            Total <span>$ {totalPrice.toFixed(2)}</span>
+            Total{' '}
+            <span className="text-2xl">
+              {totalPrice.toLocaleString('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                maximumFractionDigits: 2,
+              })}
+            </span>
           </p>
         </div>
       </div>
