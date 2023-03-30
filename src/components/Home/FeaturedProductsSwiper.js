@@ -32,11 +32,7 @@ const FeaturedProductsSwiper = () => {
             320: {
               slidesPerView: 1,
               spaceBetween: 0,
-              coverflowEffect: {
-                rotate: 0,
-                stretch: 0,
-                depth: 0,
-              },
+              coverflowEffect: false,
             },
             640: {
               slidesPerView: 2,
