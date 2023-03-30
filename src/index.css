@@ -13,4 +13,13 @@
   .btn-disabled {
     @apply flex items-center py-1 px-5 rounded-full bg-gray-200 text-gray-500;
   }
+  .tag-blue {
+    @apply border border-blue-500 bg-blue-200 text-blue-700;
+  }
+  .tag-amber {
+    @apply border border-amber-500 bg-amber-200 text-amber-700;
+  }
+  .tag-red {
+    @apply border border-red-500 bg-red-200 text-red-700;
+  }
 }

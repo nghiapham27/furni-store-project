@@ -4,15 +4,15 @@ import Stats from './Stats';
 
 const Hero = () => {
   return (
-    <div className="w-full h-[70vh] max-h-[850px] bg-hero bg-center bg-no-repeat bg-cover mb-32 md:mb-20">
-      <div className="w-full h-full text-center bg-black/20 flex flex-col items-center justify-center">
-        <h1 className="text-orange-50 font-bold text-3xl md:text-4xl">
-          Creative Home Simpify Your Furniture
+    <div className=" w-full md:h-[80vh] h-[500px] bg-hero bg-center bg-cover mb-40 md:mb-28 rounded-xl">
+      <div className="w-full h-full text-center flex flex-col items-center justify-center bg-transparent/40 rounded-xl">
+        <h1 className="text-white font-bold text-3xl md:text-4xl lg:text-5xl">
+          Creative Home Simpify <br /> Your Furniture
         </h1>
-        <h2 className="text-gray-200 text-xl md:text-2xl">
+        <h2 className="text-gray-50 text-xl md:text-2xl mt-8">
           A well-planned home always needs well-designed furniture.
         </h2>
-        <Link to={'/products'} className="btn-primary mt-10">
+        <Link to={'/products'} className="btn-primary mt-2 text-xl md:text-2xl">
           Shop Now
         </Link>
       </div>

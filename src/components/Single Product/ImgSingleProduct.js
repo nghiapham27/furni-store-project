@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { singleProductAction } from '../../store/singleProduct';
+import Loading from '../UI/Loading';
 
 const ImgSingleProduct = ({ images }) => {
   const { productData, activeImgId, loading } = useSelector(
@@ -15,7 +16,9 @@ const ImgSingleProduct = ({ images }) => {
   return (
     <>
       {loading ? (
-        <div></div>
+        <div className="col-span-2">
+          <Loading />
+        </div>
       ) : (
         <div className="w-full  ">
           {/* main img */}{' '}

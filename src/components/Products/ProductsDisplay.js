@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { ProductCardGrid, ProductCardList, Loading } from '..';
+import { ProductCardGrid, ProductCardList, Loading } from '../';
 
 const ProductsDisplay = () => {
   const { loading, filterProducts, display } = useSelector(

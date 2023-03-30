@@ -1,19 +1,21 @@
 import { FaCheckCircle } from 'react-icons/fa';
+import featureImg1 from '../../assets/feature-1.jpg';
+import featureImg2 from '../../assets/feature-2.jpg';
 
 const Features = () => {
   return (
     <div className="flex flex-col">
-      <div className="grid md:grid-cols-2 bg-gray-100 shadow-lg rounded-2xl overflow-hidden">
+      <div className="h-auto md:h-[400px] grid md:grid-cols-2 shadow-lg bg-gray-100 rounded-2xl overflow-hidden px-2">
         <img
-          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZnVybml0dXJlfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          src={featureImg1}
           alt="feature 1"
-          className="w-full h-full rounded-2xl object-cover"
+          className="w-[90%] h-[350px] max-w-[600px] rounded-2xl object-cover mx-auto my-4 md:my-auto"
         />
-        <div className="p-6">
-          <h1 className="text-xl font-bold">
+        <div className="mx-6 my-2 md:my-auto md:mx-auto max-w-[500px]">
+          <h1 className="text-xl font-bold md:text-2xl lg:text-3xl">
             We Create Your Home More Aestetic
           </h1>
-          <p className="py-2 text-gray-500">
+          <p className="py-2 text-gray-500 md:text-lg">
             Furniture power is a software as services for multipurpose business
             management system.
           </p>
@@ -21,9 +23,11 @@ const Features = () => {
             <ul className="mb-4">
               <h2 className="flex items-center">
                 <FaCheckCircle className="mr-2" />
-                <span className="text-lg font-bold">Valuation Services </span>
+                <span className="text-lg font-semibold md:text-xl lg:text-2xl">
+                  Valuation Services{' '}
+                </span>
               </h2>
-              <p>
+              <p className="lg:text-lg">
                 Sometimes features require a short description. This can be
                 detailed description.
               </p>
@@ -31,11 +35,11 @@ const Features = () => {
             <ul>
               <h2 className="flex items-center">
                 <FaCheckCircle className="mr-2" />
-                <span className="text-lg font-bold">
+                <span className="text-lg font-semibold md:text-xl lg:text-2xl">
                   Development of Furniture Models
                 </span>
               </h2>
-              <p>
+              <p className="lg:text-lg">
                 Sometimes features require a short description. This can be
                 detailed description.
               </p>
@@ -44,19 +48,21 @@ const Features = () => {
         </div>
       </div>
       {/*  */}
-      <div className="grid md:grid-cols-2 md:flex-row bg-gray-100 shadow-lg rounded-2xl overflow-hidden mt-6">
+      <div className="h-auto md:h-[400px] grid md:grid-cols-2 shadow-lg bg-gray-100 rounded-2xl overflow-hidden mt-6 px-2">
         <img
-          src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZnVybml0dXJlfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          src={featureImg2}
           alt="feature 1"
-          className="w-full rounded-2xl object-cover md:col-start-2"
+          className="w-[90%] h-[350px] max-w-[600px] rounded-2xl object-cover mx-auto my-4 md:my-auto"
         />
-        <div className="p-6 md:col-start-1 md:row-start-1 flex flex-col md:justify-center">
-          <h1 className="text-xl font-bold">
+        <div className=" md:col-start-1 md:row-start-1 mx-6 my-4 md:my-auto md:mx-auto max-w-[500px]">
+          <h1 className="text-xl font-bold md:text-2xl lg:text-3xl">
             The Best Furniture Manufacturer of your choice
           </h1>
-          <p>
+          <p className="lg:text-lg py-6">
             Furniture power is a software as services for multipurpose business
-            management system.
+            management system, especially for them who are running multiple
+            businesses explore the future Furniture power is a software as
+            services.
           </p>
         </div>
       </div>

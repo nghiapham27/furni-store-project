@@ -46,17 +46,15 @@ const ProductCardList = ({ singleProductData }) => {
 
             {/* tags */}
             <p className="flex justify-center bg-slate-100">
-              <span className="border border-slate-700 bg-blue-200 rounded-full px-2">
+              <span className="tag-blue rounded-full px-2">
                 {company.toUpperCase()}
               </span>
-              <span className="border border-slate-700 bg-amber-200 rounded-full px-2 mx-1 ">
+              <span className="tag-amber rounded-full px-2 mx-1 ">
                 {category}
               </span>
 
               {shipping && (
-                <span className="border border-slate-700 bg-red-300 rounded-full px-2">
-                  free ship
-                </span>
+                <span className="tag-red rounded-full px-2">free ship</span>
               )}
             </p>
           </div>

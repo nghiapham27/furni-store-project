@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <>
       {/*Main Nav */}
-      <nav className="w-full bg-gray-200">
+      <nav className="w-full h-[10vh] bg-gray-200/50 shadow-md z-10">
         <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-3 px-4">
           <Brand />
           <NavList />
