@@ -24,7 +24,7 @@ const ProductCardList = ({ singleProductData }) => {
         {/* image */}
         <img
           src={image}
-          alt="demo"
+          alt={name}
           className="w-[150px] h-[150px] rounded-t-xl object-cover"
         />
 

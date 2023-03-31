@@ -20,7 +20,6 @@ const FeaturedProductsSwiper = () => {
     (product) => product.featured
   );
 
-  console.log(featuredProductsList);
   return (
     <>
       {loading ? (
@@ -32,7 +31,12 @@ const FeaturedProductsSwiper = () => {
             320: {
               slidesPerView: 1,
               spaceBetween: 0,
-              coverflowEffect: false,
+              coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 0,
+                slideShadows: false,
+              },
             },
             640: {
               slidesPerView: 2,

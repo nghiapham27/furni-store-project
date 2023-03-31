@@ -21,7 +21,7 @@ const ProductCardGrid = ({ singleProductData }) => {
         {/* image */}
         <img
           src={image}
-          alt="demo"
+          alt={name}
           className="w-full h-[200px] md:h-[300px] rounded-t-xl object-cover"
         />
 
