@@ -42,9 +42,6 @@ const InfoSingleProduct = () => {
     ? (availableQty = itemInCart.availableQty)
     : (availableQty = stock);
 
-  console.log('availableQty', availableQty);
-  console.log('selectedQty', selectedQty);
-
   return (
     <>
       {loading ? (

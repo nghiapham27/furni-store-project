@@ -2,6 +2,7 @@ import MainWrapper from './UI/MainWrapper';
 import NavBar from './Navigation/NavBar';
 import NavList from './Navigation/NavList';
 import NavUser from './Navigation/NavUser';
+import NavCart from './Navigation/NavCart';
 import SideBar from './Navigation/SideBar';
 import Hero from './Home/Hero';
 import Features from './Home/Features';
@@ -27,6 +28,7 @@ export {
   NavBar,
   NavList,
   NavUser,
+  NavCart,
   SideBar,
   Hero,
   Features,

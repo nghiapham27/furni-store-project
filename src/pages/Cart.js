@@ -11,8 +11,6 @@ const Cart = () => {
     (state) => state.cart
   );
 
-  console.log(totalPrice);
-
   return (
     <section className="max-w-7xl mx-auto text-2xl">
       {/* Cart header */}

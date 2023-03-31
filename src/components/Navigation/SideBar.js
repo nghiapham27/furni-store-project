@@ -1,4 +1,4 @@
-import { Brand } from '..';
+import { Brand, NavCart, NavUser } from '..';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
@@ -49,7 +49,7 @@ const SideBar = ({ onSideBar, sideBar }) => {
         </ul>
         {/* nav buttons */}
         <div className="w-full flex justify-center items-center">
-          <Link to="cart" className="btn-nav mr-4" onClick={() => onSideBar()}>
+          {/* <Link to="cart" className="btn-nav mr-4" >
             <span>Cart</span>
             <div className="relative">
               <FaShoppingCart size={30} />
@@ -57,11 +57,17 @@ const SideBar = ({ onSideBar, sideBar }) => {
                 {totalQty}
               </span>
             </div>
-          </Link>
-          <Link className="btn-nav" onClick={() => onSideBar()}>
+          </Link> */}
+          <div onClick={() => onSideBar()}>
+            <NavCart />
+          </div>
+          <div onClick={() => onSideBar()}>
+            <NavUser />
+          </div>
+          {/* <Link className="btn-nav" onClick={() => onSideBar()}>
             <FaUser size={30} className />
             Login
-          </Link>
+          </Link> */}
         </div>
       </div>
     </>

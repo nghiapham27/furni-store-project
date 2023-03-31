@@ -1,11 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// try to get cart data from local storage
+const cartLocalStorage = JSON.parse(localStorage.getItem('cart'));
+
 const initialCart = {
-  list: [], // {id, name, img, color, price, qty, subTotal}
-  totalQty: 0,
-  subTotal: 0,
-  shippingFee: 0,
-  totalPrice: 0,
+  list: cartLocalStorage?.list || [], // {id, name, img, color, price, qty, subTotal}
+  totalQty: cartLocalStorage?.totalQty || 0,
+  subTotal: cartLocalStorage?.subTotal || 0,
+  shippingFee: cartLocalStorage?.shippingFee || 0,
+  totalPrice: cartLocalStorage?.totalPrice || 0,
 };
 
 // update totalQty & totalPrice
@@ -20,6 +23,8 @@ const updateCart = (state) => {
   state.subTotal = state.list.reduce((a, c) => (a += c.subTotal), 0);
   // update totalPrice
   state.totalPrice = state.subTotal + state.shippingFee;
+  // save to local storage
+  localStorage.setItem('cart', JSON.stringify(state));
 };
 
 // add to cart fn handler

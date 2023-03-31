@@ -1,5 +1,5 @@
 import { FaBars } from 'react-icons/fa';
-import { Brand, NavList, NavUser, SideBar } from '..';
+import { Brand, NavList, NavCart, NavUser, SideBar } from '..';
 import { useEffect, useState } from 'react';
 
 const NavBar = () => {
@@ -24,8 +24,11 @@ const NavBar = () => {
         <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-3 px-4">
           <Brand />
           <NavList />
-          <NavUser />
-          {/* Bar Button */}
+          <div className="hidden min-w-[200px] md:flex justify-center items-center">
+            <NavCart />
+            <NavUser />
+          </div>
+          {/* Bar Button for SideBar */}
           <button
             className="text-gray-800 md:hidden"
             onClick={() => setSideBar(!sideBar)}

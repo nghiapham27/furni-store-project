@@ -1,11 +1,10 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect } from 'react';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import { MainWrapper, NavBar, Footer, BackToTop } from '../components';
 
-import store from '../store';
 import { userAction } from '../store/user';
 
 const RootPage = () => {
@@ -20,16 +19,15 @@ const RootPage = () => {
       })
     );
   }, [isAuthenticated]);
+
   return (
     <MainWrapper>
-      {/* <Provider store={store}> */}
       <NavBar />
       <section className="flex-grow py-4 px-8">
         <Outlet />
       </section>
       <BackToTop />
       <Footer />
-      {/* </Provider> */}
     </MainWrapper>
   );
 };

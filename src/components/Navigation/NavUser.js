@@ -5,7 +5,6 @@ import { FaShoppingCart, FaUserPlus, FaUserMinus } from 'react-icons/fa';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const NavUser = () => {
-  const { totalQty } = useSelector((state) => state.cart);
   const { loginWithRedirect, logout } = useAuth0();
   const { isAuthenticated, user } = useSelector((state) => state.user);
 
@@ -13,29 +12,18 @@ const NavUser = () => {
   console.log('user-user', user);
 
   return (
-    <div className="hidden min-w-[200px] md:flex justify-center items-center">
-      <Link to="cart" className="btn-nav mr-4">
-        <span>Cart</span>
-        <div className="relative">
-          <FaShoppingCart size={25} />
-          <span className="absolute -top-4 left-4 text-white bg-red-600 rounded-full text-xl h-8 w-8 flex items-center justify-center">
-            {totalQty}
-          </span>
-        </div>
-      </Link>
-      <Link className="btn-nav">
-        {!isAuthenticated ? (
-          <FaUserPlus size={25} onClick={() => loginWithRedirect()} />
-        ) : (
-          <FaUserMinus
-            size={25}
-            onClick={() =>
-              logout({ logoutParams: { returnTo: window.location.origin } })
-            }
-          />
-        )}
-      </Link>
-    </div>
+    <Link className="btn-nav">
+      {!isAuthenticated ? (
+        <FaUserPlus size={25} onClick={() => loginWithRedirect()} />
+      ) : (
+        <FaUserMinus
+          size={25}
+          onClick={() =>
+            logout({ logoutParams: { returnTo: window.location.origin } })
+          }
+        />
+      )}
+    </Link>
   );
 };
 export default NavUser;
