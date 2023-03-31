@@ -11,8 +11,6 @@ const NavUser = () => {
   let userImage;
   if (user) userImage = user.picture;
   console.log('user-isAuthenticated', isAuthenticated);
-  console.log('user-user', user);
-  console.log('user-image', userImage);
 
   return (
     <Link className="btn-nav">

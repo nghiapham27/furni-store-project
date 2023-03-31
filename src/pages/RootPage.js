@@ -19,11 +19,6 @@ const RootPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getToken = async () => {
-      const token = await getAccessTokenSilently();
-      console.log(token);
-    };
-    getToken();
     dispatch(
       userAction.initiateUser({
         isAuthenticated: isAuthenticated,

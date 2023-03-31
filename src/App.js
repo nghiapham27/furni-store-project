@@ -12,6 +12,7 @@ import {
   SingleProduct,
   Cart,
   Checkout,
+  PrivateRoute,
 } from './pages';
 
 function App() {
@@ -24,7 +25,14 @@ function App() {
         { index: true, element: <Home /> },
         { path: 'about', element: <About /> },
         { path: 'cart', element: <Cart /> },
-        { path: 'checkout', element: <Checkout /> },
+        {
+          path: 'checkout',
+          element: (
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          ),
+        },
         {
           path: 'products',
           element: <Products />,

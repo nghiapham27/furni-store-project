@@ -1,4 +1,4 @@
 const Checkout = () => {
-  return <div>Checkout</div>;
+  return <div className="text-2xl font-bold">Checkout</div>;
 };
 export default Checkout;
