@@ -2,6 +2,7 @@ export const links = [
   { id: 1, text: 'Home', url: '/' },
   { id: 2, text: 'Products', url: 'products' },
   { id: 3, text: 'About', url: 'about' },
+  { id: 4, text: 'Checkout', url: 'checkout' },
 ];
 
 export const statsData = [

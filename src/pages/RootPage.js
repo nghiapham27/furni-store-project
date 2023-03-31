@@ -8,10 +8,22 @@ import { MainWrapper, NavBar, Footer, BackToTop } from '../components';
 import { userAction } from '../store/user';
 
 const RootPage = () => {
-  const { isLoading, isAuthenticated, error, user, logout } = useAuth0();
+  const {
+    isLoading,
+    isAuthenticated,
+    error,
+    user,
+    logout,
+    getAccessTokenSilently,
+  } = useAuth0();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    const getToken = async () => {
+      const token = await getAccessTokenSilently();
+      console.log(token);
+    };
+    getToken();
     dispatch(
       userAction.initiateUser({
         isAuthenticated: isAuthenticated,

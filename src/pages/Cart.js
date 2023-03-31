@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import { FaShoppingCart } from 'react-icons/fa';
 import { BsArrowRightShort } from 'react-icons/bs';
-import { ItemCart } from '../components';
-
+import { ItemCart, NavUser } from '../components';
+import { Button } from 'antd';
 const Cart = () => {
   // set up the subscription for cart
   const { list, shippingFee, subTotal, totalPrice } = useSelector(
     (state) => state.cart
   );
+  const { loginWithRedirect } = useAuth0();
+  const { isAuthenticated } = useSelector((state) => state.user);
+  console.log(isAuthenticated);
 
   return (
     <section className="max-w-7xl mx-auto text-2xl">
@@ -86,6 +90,18 @@ const Cart = () => {
               })}
             </span>
           </p>
+          {!isAuthenticated ? (
+            <button
+              className="btn-nav mx-auto mt-4 bg-gray-300 font-bold"
+              onClick={() => loginWithRedirect()}
+            >
+              Login to Checkout
+            </button>
+          ) : (
+            <button className="btn-nav mx-auto mt-4 bg-gray-300 font-bold">
+              Checkout
+            </button>
+          )}
         </div>
       </div>
     </section>

@@ -5,5 +5,6 @@ import About from './AboutPage.js';
 import Products from './ProductsPage.js';
 import SingleProduct from './SingleProductPage.js';
 import Cart from './Cart';
+import Checkout from './Checkout';
 
-export { Root, Error, Home, About, Products, SingleProduct, Cart };
+export { Root, Error, Home, About, Products, SingleProduct, Cart, Checkout };

@@ -1,13 +1,12 @@
 import { Brand, NavCart, NavUser } from '..';
 import { Link } from 'react-router-dom';
-import { FaShoppingCart, FaUser } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 
 import { links } from '../../utils/constants';
 import { useSelector } from 'react-redux';
 
 const SideBar = ({ onSideBar, sideBar }) => {
-  const { totalQty } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   return (
     <>
@@ -36,6 +35,7 @@ const SideBar = ({ onSideBar, sideBar }) => {
         {/* nav list */}
         <ul className="text-lg flex flex-col justify-evenly items-left font-bold py-8">
           {links.map(({ id, text, url }) => {
+            if (url === 'checkout' && isAuthenticated === false) return;
             return (
               <li
                 key={id}
@@ -49,25 +49,12 @@ const SideBar = ({ onSideBar, sideBar }) => {
         </ul>
         {/* nav buttons */}
         <div className="w-full flex justify-center items-center">
-          {/* <Link to="cart" className="btn-nav mr-4" >
-            <span>Cart</span>
-            <div className="relative">
-              <FaShoppingCart size={30} />
-              <span className="absolute -top-4 left-4 text-white bg-red-600 rounded-full text-xl h-8 w-8 flex items-center justify-center">
-                {totalQty}
-              </span>
-            </div>
-          </Link> */}
           <div onClick={() => onSideBar()}>
             <NavCart />
           </div>
           <div onClick={() => onSideBar()}>
             <NavUser />
           </div>
-          {/* <Link className="btn-nav" onClick={() => onSideBar()}>
-            <FaUser size={30} className />
-            Login
-          </Link> */}
         </div>
       </div>
     </>

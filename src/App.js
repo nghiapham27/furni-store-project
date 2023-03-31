@@ -11,6 +11,7 @@ import {
   Products,
   SingleProduct,
   Cart,
+  Checkout,
 } from './pages';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         { index: true, element: <Home /> },
         { path: 'about', element: <About /> },
         { path: 'cart', element: <Cart /> },
+        { path: 'checkout', element: <Checkout /> },
         {
           path: 'products',
           element: <Products />,
@@ -36,7 +38,7 @@ function App() {
   ]);
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </Provider>
   );
 }
