@@ -35,5 +35,5 @@ export default RootPage;
 // test.furni.store.spa@gmail.com
 // TESTfurnistore123
 
-// button outline, setup non-effect for featured products swiper
 // error element
+// fetch race

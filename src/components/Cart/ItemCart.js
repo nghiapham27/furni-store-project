@@ -10,7 +10,7 @@ const ItemCart = ({ itemData }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="grid grid-cols-[1fr_max-content_min-content] items-center text-base md:text-2xl md:grid-cols-[minmax(300px,1fr)_repeat(3,minmax(0,1fr))_min-content] py-2">
+    <div className="grid grid-cols-[1fr_max-content_min-content] items-center text-base md:text-2xl md:grid-cols-[minmax(300px,1fr)_repeat(3,minmax(0,1fr))_min-content] py-2 border-b border-b-gray-300">
       {/* img & name & color & (price) */}
       <Link
         to={`/products/${id}`}
