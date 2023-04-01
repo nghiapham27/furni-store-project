@@ -17,11 +17,11 @@ const Cart = () => {
   return (
     <section className="max-w-7xl mx-auto text-2xl">
       {/* Cart header */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mb-4">
         {list.length > 0 ? (
-          <h1 className="text-2xl font-bold pr-4">Your Cart</h1>
+          <h1 className="font-section-header pr-4">Your Cart</h1>
         ) : (
-          <h1 className="text-2xl font-bold pr-4 text-red-500">
+          <h1 className="font-section-header pr-4 text-red-500">
             Your Cart is Empty
           </h1>
         )}
