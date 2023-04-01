@@ -4,8 +4,11 @@ import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
 
 import FilterDropdown from './FilterDropdown';
 import { productsAction } from '../../store/products';
+import { useEffect, useState } from 'react';
 
 const ProductsFilter = () => {
+  // sticky filter state
+  const [stick, setStick] = useState(false);
   // set up filterInput subscription
   const { productsData, filterInput, maxPrice } = useSelector(
     (state) => state.products
@@ -19,8 +22,36 @@ const ProductsFilter = () => {
   const companies = [...new Set(productsData.map((item) => item.company))];
   const colors = [...new Set(productsData.map((item) => item.colors).flat())];
 
+  useEffect(() => {
+    // Stick the filter while scrolling down
+    const nav = document.querySelector('nav');
+    const productsFilter = document.querySelector('.products-filter');
+    const navHeight = nav.getBoundingClientRect().height; //nav's height
+    const stickyFilter = function (entries, observer) {
+      const [entry] = entries;
+      // toggle state when moving out filter
+      if (!entry.isIntersecting) {
+        // set stick true & unobserve
+        setStick(true);
+        observer.unobserve(productsFilter);
+      } else setStick(false);
+    };
+    //Create the observer
+    const filterObserver = new IntersectionObserver(stickyFilter, {
+      root: null,
+      threshold: 0,
+      rootMargin: `-${navHeight + 32}px`,
+    });
+    //Observe header
+    filterObserver.observe(productsFilter);
+  }, []);
+
   return (
-    <div className="w-full pb-4 md:px-0">
+    <div
+      className={`products-filter w-full pb-4 md:px-0 ${
+        stick ? 'md:sticky md:top-20' : ''
+      }`}
+    >
       <div className="text-center">
         {/* Search */}
         <div className="flex justify-center">
