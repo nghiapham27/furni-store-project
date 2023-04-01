@@ -14,7 +14,7 @@ const ProductsPage = () => {
   }, []);
 
   return (
-    <section className="grid justify-center md:grid-cols-4 md:gap-4">
+    <section className="max-w-[1500px] mx-auto grid justify-center md:grid-cols-4 md:gap-4">
       <div className="col-span-1">
         <ProductsFilter />
       </div>

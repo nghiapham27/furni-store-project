@@ -1,5 +1,6 @@
-import { Loading } from '../components';
+import { Spin } from 'antd';
+
 const AboutPage = () => {
-  return <section>{/* <Loading /> */}</section>;
+  return <div className=""></div>;
 };
 export default AboutPage;

@@ -8,14 +8,7 @@ import { MainWrapper, NavBar, Footer, BackToTop } from '../components';
 import { userAction } from '../store/user';
 
 const RootPage = () => {
-  const {
-    isLoading,
-    isAuthenticated,
-    error,
-    user,
-    logout,
-    getAccessTokenSilently,
-  } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,7 +23,7 @@ const RootPage = () => {
   return (
     <MainWrapper>
       <NavBar />
-      <section className="flex-grow py-4 px-8">
+      <section className="flex-grow py-8 px-8 w-full max-w-[1600px] mx-auto">
         <Outlet />
       </section>
       <BackToTop />
@@ -39,7 +32,8 @@ const RootPage = () => {
   );
 };
 export default RootPage;
+// test.furni.store.spa@gmail.com
+// TESTfurnistore123
 
 // button outline, setup non-effect for featured products swiper
-// fetch cart from the local storage
-// NavUser for sidebar
+// error element

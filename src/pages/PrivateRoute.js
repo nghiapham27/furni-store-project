@@ -7,8 +7,10 @@ const PrivateRoute = ({ children }) => {
   if (!isAuthenticated) {
     redirect(loginWithRedirect());
     return (
-      <div>
-        <Spin /> Redirect to Login Page...
+      <div className="flex w-full">
+        <p className=" mx-auto text-2xl font-bold">
+          <Spin /> Redirect to Login Page...
+        </p>
       </div>
     );
   }

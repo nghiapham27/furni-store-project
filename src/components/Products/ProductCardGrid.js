@@ -16,7 +16,7 @@ const ProductCardGrid = ({ singleProductData }) => {
 
   // Card of Grid layout
   return (
-    <div className="w-full shadow-xl rounded-2xl mx-auto hover:border-amber-300 border-4 border-transparent hover:-translate-y-1   transition-all duration-500 overflow-hidden">
+    <div className="w-full shadow-xl rounded-2xl mx-auto hover:border-amber-300 border-4 border-transparent hover:-translate-y-1 transition-all duration-500 overflow-hidden">
       <Link to={`/products/${id}`}>
         {/* image */}
         <img
@@ -26,7 +26,7 @@ const ProductCardGrid = ({ singleProductData }) => {
         />
 
         {/* tags */}
-        <p className="flex flex-wrap justify-center bg-slate-100">
+        <p className="flex flex-wrap justify-center bg-slate-100 pt-2">
           <span className="tag-blue rounded-full px-2 mt-1">
             {company.toUpperCase()}
           </span>
@@ -58,17 +58,6 @@ const ProductCardGrid = ({ singleProductData }) => {
           )}`}</span>
         </p>
       </Link>
-
-      {/* Actions */}
-      <div className="flex justify-end p-2 bg-yellow-50 rounded-b-xl">
-        {popup && (
-          <p className="text-sm text-slate-500">Item added to your cart!</p>
-        )}
-        <button>
-          <MdFavoriteBorder size={25} />
-          {/* <MdFavorite size={25} /> */}
-        </button>
-      </div>
     </div>
   );
 };

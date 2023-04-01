@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: { italianno: ['Italianno', 'sans-serif'] },
       backgroundImage: {
         hero: "url('/src/assets/hero.jpg')",
+        newsletter: "url('/src/assets/newsletter.jpg')",
       },
     },
   },

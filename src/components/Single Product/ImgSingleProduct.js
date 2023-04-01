@@ -27,7 +27,7 @@ const ImgSingleProduct = ({ images }) => {
               productData.images.filter((img) => img.id === activeImgId)[0].url
             }
             alt=""
-            className="object-cover w-full h-60 md:w-[100%] md:h-[350px]"
+            className="object-cover w-full h-[300px] md:h-[400px] lg:h-[450px] rounded-md"
           />
           {/* thumbnails */}
           {/* should use map to list these img */}

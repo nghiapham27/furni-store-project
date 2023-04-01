@@ -66,20 +66,11 @@ const ProductCardList = ({ singleProductData }) => {
             </p>
           </div>
           {/* description */}
-          <div className="w-[90%] max-h-[80px] line-clamp-3">{description}</div>
+          <div className="w-[90%] max-h-[80px] line-clamp-3 text-justify">
+            {description}
+          </div>
         </div>
       </Link>
-
-      {/* Actions */}
-      <div className="flex justify-end p-2 bg-yellow-50 rounded-b-xl">
-        {popup && (
-          <p className="text-sm text-slate-500">Item added to your cart</p>
-        )}
-        <button>
-          <MdFavoriteBorder size={25} />
-          {/* <MdFavorite size={25} /> */}
-        </button>
-      </div>
     </div>
   );
 };
