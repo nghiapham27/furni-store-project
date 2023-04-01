@@ -47,7 +47,10 @@ const InfoSingleProduct = () => {
       {/* Info Header */}
       <div>
         <h1 className="font-section-header">
-          {name.split('')[0].toUpperCase() + name.slice(1)}
+          {name
+            .split(' ')
+            .map((word) => word.split('')[0].toUpperCase() + word.slice(1))
+            .join(' ')}
         </h1>
         <StarsReview numStars={stars} reviews={reviews} />
         <p className="font-sub-header text-gray-500">
