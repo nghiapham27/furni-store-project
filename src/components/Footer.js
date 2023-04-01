@@ -1,13 +1,30 @@
 import Brand from './UI/Brand';
+import { MdOutlineCopyright } from 'react-icons/md';
+
+import { socialsList } from '../utils/constants';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-700 max-w-[1600px] mx-auto px-6 py-2">
-      <Brand />
-      This is the footer Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Officia non vero sit ullam iusto consectetur nemo, quod natus illum
-      commodi recusandae, at perferendis. Ad temporibus, quae iste ea quos
-      recusandae.
+    <footer className="bg-slate-500 max-w-[1600px] w-full min-h-[100px] mx-auto  py-2 px-6">
+      <div className="flex flex-col md:flex-row items-center justify-between mx-auto md:mx-40">
+        <Brand />
+        <div className="grid grid-cols-4 gap-2 my-3 md:my-0">
+          {socialsList.map((social) => {
+            return (
+              <div
+                key={social.id}
+                className="w-[30px] h-[30px] rounded-[50%] bg-gray-200 flex items-center justify-center cursor-pointer"
+              >
+                {social.icon}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <p className="text-white flex items-center w-max mx-auto font-semibold">
+        <MdOutlineCopyright size={20} className="mr-2" />
+        FurniStore 2023
+      </p>
     </footer>
   );
 };

@@ -1,3 +1,5 @@
+import { FaFacebookF, FaTwitter, FaYoutube, FaInstagram } from 'react-icons/fa';
+
 export const links = [
   { id: 1, text: 'Home', url: '/' },
   { id: 2, text: 'Products', url: 'products' },
@@ -16,6 +18,13 @@ export const sortBy = [
   { text: '---', type: null },
   { text: 'Price (Lowest)', type: 'ascending' },
   { text: 'Price (Highest)', type: 'descending' },
+];
+
+export const socialsList = [
+  { id: 1, name: 'facebook', icon: <FaFacebookF size={20} /> },
+  { id: 2, name: 'twitter', icon: <FaTwitter size={20} /> },
+  { id: 3, name: 'youtube', icon: <FaYoutube size={20} /> },
+  { id: 4, name: 'instagram', icon: <FaInstagram size={20} /> },
 ];
 
 export const productsAPI = 'https://course-api.com/react-store-products';
