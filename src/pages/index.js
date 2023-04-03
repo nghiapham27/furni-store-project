@@ -7,6 +7,7 @@ import SingleProduct from './SingleProductPage.js';
 import Cart from './Cart';
 import Checkout from './Checkout';
 import PrivateRoute from './PrivateRoute';
+import AnimationPage from './AnimationPage.js';
 
 export {
   Root,
@@ -18,4 +19,5 @@ export {
   Cart,
   Checkout,
   PrivateRoute,
+  AnimationPage,
 };

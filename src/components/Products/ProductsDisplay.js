@@ -29,13 +29,12 @@ const ProductsDisplay = () => {
               : 'w-full  flex-cols'
           }
         >
+          {filterProducts.length === 0 && !error && (
+            <div className="font-bold text-red-500">
+              Sorry! No products matched your search
+            </div>
+          )}
           <AnimatePresence>
-            {filterProducts.length === 0 && !error && (
-              <div className="font-bold text-red-500">
-                Sorry! No products matched your search
-              </div>
-            )}
-
             {filterProducts.map((product) => {
               return (
                 <motion.li

@@ -1,13 +1,16 @@
 import { Hero, Features, FeaturedProducts, Newsletter } from '../components';
+import AnimationPage from './AnimationPage';
 
 const HomePage = () => {
   return (
-    <section>
-      <Hero />
-      <Features />
-      <FeaturedProducts />
-      <Newsletter />
-    </section>
+    <AnimationPage>
+      <section>
+        <Hero />
+        <Features />
+        <FeaturedProducts />
+        <Newsletter />
+      </section>
+    </AnimationPage>
   );
 };
 export default HomePage;
