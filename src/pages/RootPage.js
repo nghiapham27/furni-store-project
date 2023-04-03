@@ -32,5 +32,3 @@ const RootPage = () => {
   );
 };
 export default RootPage;
-// test.furni.store.spa@gmail.com
-// TESTfurnistore123

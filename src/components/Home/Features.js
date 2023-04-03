@@ -11,7 +11,7 @@ const Features = () => {
           <img
             src={featureImg1}
             alt="feature 1"
-            className="w-full max-w-[600px] h-[250px] md:h-[350px] mx-auto rounded-2xl object-cover "
+            className="w-full max-w-[600px] h-[250px] md:h-[350px] mx-auto rounded-2xl object-cover hover:scale-105 transition-all duration-300"
           />
         </div>
         {/* text */}
@@ -53,12 +53,11 @@ const Features = () => {
 
       <div className="mt-10 h-auto md:h-[400px] grid md:grid-cols-2 md:gap-4 md:items-center shadow-lg bg-gray-100 rounded-2xl overflow-hidden py-4 px-4">
         {/* img */}
-
         <div className="w-full">
           <img
             src={featureImg2}
             alt="feature 1"
-            className="w-full max-w-[600px] h-[250px] md:h-[350px] rounded-2xl object-cover mx-auto"
+            className="w-full max-w-[600px] h-[250px] md:h-[350px] rounded-2xl object-cover mx-auto hover:scale-105 transition-all duration-300"
           />
         </div>
         {/* text */}
