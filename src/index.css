@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
 @layer components {
   .font-primary-header {
-    @apply font-bold text-3xl md:text-4xl lg:text-5xl;
+    @apply font-alegreya font-bold text-4xl md:text-5xl lg:text-7xl;
   }
   .font-sub-header {
     @apply font-semibold text-lg md:text-xl lg:text-2xl;

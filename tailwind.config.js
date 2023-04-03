@@ -9,7 +9,10 @@ module.exports = {
         // min-width
         'big-screen': '1800px',
       },
-      fontFamily: { italianno: ['Italianno', 'sans-serif'] },
+      fontFamily: {
+        italianno: ['Italianno', 'sans-serif'],
+        alegreya: ['Alegreya Sans', 'sans-serif'],
+      },
       backgroundImage: {
         hero: "url('/src/assets/hero.jpg')",
         newsletter: "url('/src/assets/newsletter.jpg')",
