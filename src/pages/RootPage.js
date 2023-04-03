@@ -23,7 +23,7 @@ const RootPage = () => {
   return (
     <MainWrapper>
       <NavBar />
-      <section className="flex-grow py-8 px-8 w-full max-w-[1600px] mx-auto">
+      <section className="container w-full h-full flex-auto mx-auto py-8">
         <Outlet />
       </section>
       <BackToTop />
@@ -34,6 +34,3 @@ const RootPage = () => {
 export default RootPage;
 // test.furni.store.spa@gmail.com
 // TESTfurnistore123
-
-// error element
-// fetch race

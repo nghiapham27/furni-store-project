@@ -6,7 +6,7 @@ const Brand = () => {
       to={'/'}
       className="text-4xl lg:text-5xl font-extrabold font-italianno shrink-0"
     >
-      <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-yellow-400 pr-2 ">
+      <span className="text-transparent bg-clip-text bg-gradient-to-br from-amber-500 to-yellow-400 pr-2 hover:brightness-110">
         FurniStore
       </span>
     </Link>

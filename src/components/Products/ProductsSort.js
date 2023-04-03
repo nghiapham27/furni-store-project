@@ -27,8 +27,8 @@ const ProductsSort = () => {
           />
         </p>
         {/* The numer of products showed */}
-        <p className="font-bold text-gray-500">
-          <span className="font-bold text-red-500">
+        <p className="font-bold  text-gray-500">
+          <span className="font-bold text-red-500 text-xl">
             {filterProducts.length}{' '}
           </span>
           products found

@@ -2,7 +2,7 @@ import { statsData } from '../../utils/constants';
 
 const Stats = () => {
   return (
-    <div className="w-full max-w-[1280px] mx-auto -translate-y-[50%] mb-12">
+    <div className="w-full max-w-[1280px] mx-auto -translate-y-[50%] mb-20">
       <div className="mx-4 flex flex-wrap md:flex-nowrap justify-center gap-y-5 bg-slate-500/90 rounded-3xl p-2 text-white text-sm md:text-base">
         {statsData.map((stats) => {
           return (

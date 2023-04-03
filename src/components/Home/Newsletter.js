@@ -1,6 +1,6 @@
 function Newsletter() {
   return (
-    <div className="flex w-full max-w-[1000px] h-[250px] md:h-[300px] justify-end bg-newsletter bg-cover bg-right  mt-10 mx-auto rounded-lg shadow-lg">
+    <div className="flex w-full max-w-[1000px] h-[250px] md:h-[300px] justify-end bg-newsletter bg-cover bg-right  mt-20 mx-auto rounded-lg shadow-lg">
       <div className="my-auto mr-5 md:mr-32">
         <h1 className="font-section-header text-center">Get More Discount</h1>
         <form action="/" className="flex flex-col mt-6">

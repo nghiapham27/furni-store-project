@@ -5,7 +5,7 @@ import { links } from '../../utils/constants';
 const NavList = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
   return (
-    <ul className="hidden md:flex md:grow md:max-w-[500px] text-lg flex-shrink-0 justify-between items-center min-w-[300px] font-bold">
+    <ul className="hidden md:flex md:max-w-max text-lg flex-shrink-0 justify-between items-center min-w-[300px] font-bold">
       {links.map(({ id, text, url }) => {
         if (url === 'checkout' && isAuthenticated === false) return;
         return (

@@ -5,14 +5,18 @@ import featureImg2 from '../../assets/feature-2.jpg';
 const Features = () => {
   return (
     <div className="flex flex-col mt-40 md:mt-28">
-      <div className="h-auto md:h-[400px] grid md:grid-cols-2 shadow-lg bg-gray-100 rounded-2xl overflow-hidden px-2">
-        <img
-          src={featureImg1}
-          alt="feature 1"
-          className="w-[90%] max-w-[600px] h-[250px] md:h-[350px] rounded-2xl object-cover mx-auto my-4 md:my-auto"
-        />
-        <div className="mx-6 my-2 md:my-auto md:mx-auto max-w-[520px]">
-          <h1 className="font-section-header">
+      <div className="h-auto md:h-[400px] grid md:grid-cols-2 md:gap-4 md:items-center shadow-lg bg-gray-100 rounded-2xl overflow-hidden px-4 py-4">
+        {/* img */}
+        <div className="w-full">
+          <img
+            src={featureImg1}
+            alt="feature 1"
+            className="w-full max-w-[600px] h-[250px] md:h-[350px] mx-auto rounded-2xl object-cover "
+          />
+        </div>
+        {/* text */}
+        <div className="w-full mx-auto my-4 md:my-0">
+          <h1 className="font-section-header text-center">
             We Create Your Home More Aestetic
           </h1>
           <p className="py-2 text-slate-400 md:text-lg font-semibold">
@@ -46,17 +50,24 @@ const Features = () => {
         </div>
       </div>
       {/*  */}
-      <div className="h-auto md:h-[400px] grid md:grid-cols-2 shadow-lg bg-gray-100 rounded-2xl overflow-hidden mt-6 px-2">
-        <img
-          src={featureImg2}
-          alt="feature 1"
-          className="w-[90%] max-w-[600px] h-[250px] md:h-[350px]  rounded-2xl object-cover mx-auto my-4 md:my-auto"
-        />
-        <div className=" md:col-start-1 md:row-start-1 mx-6 my-4 md:my-auto md:mx-auto max-w-[500px]">
-          <h1 className="font-section-header">
-            The Best Furniture Manufacturer of your choice
+
+      <div className="mt-10 h-auto md:h-[400px] grid md:grid-cols-2 md:gap-4 md:items-center shadow-lg bg-gray-100 rounded-2xl overflow-hidden py-4 px-4">
+        {/* img */}
+
+        <div className="w-full">
+          <img
+            src={featureImg2}
+            alt="feature 1"
+            className="w-full max-w-[600px] h-[250px] md:h-[350px] rounded-2xl object-cover mx-auto"
+          />
+        </div>
+        {/* text */}
+        {/* mx-6 my-4 md:my-auto md:mx-auto max-w-[500px] */}
+        <div className=" md:col-start-1 md:row-start-1 w-full mx-auto my-4 md:my-0">
+          <h1 className="font-section-header text-center">
+            The Best Furniture Manufacturer of Your Choice
           </h1>
-          <p className="lg:text-lg py-6 text-justify">
+          <p className="lg:text-lg py-6">
             Furniture power is a software as services for multipurpose business
             management system, especially for them who are running multiple
             businesses explore the future Furniture power is a software as

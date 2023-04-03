@@ -23,10 +23,10 @@ const BackToTop = () => {
         onTop
           ? ' fixed top-[90vh] right-[5vw]'
           : 'absolute -top-[100%] right-[5vw]'
-      } text-blue-400 z-10 w-[30px] h-[30px] bg-gray-600/50 rounded-[50%] cursor-pointer hover:text-blue-600 hover:bg-gray-300/50`}
+      } text-blue-400 z-10 w-[40px] h-[40px] bg-gray-600/50 rounded-[50%] cursor-pointer hover:text-blue-600 hover:bg-gray-300/50`}
       onClick={backToTopHandler}
     >
-      <MdKeyboardDoubleArrowUp size={30} />
+      <MdKeyboardDoubleArrowUp size={40} />
     </div>
   );
 };

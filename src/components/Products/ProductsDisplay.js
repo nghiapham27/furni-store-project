@@ -22,7 +22,7 @@ const ProductsDisplay = () => {
         <ul
           className={
             display === 'grid'
-              ? 'w-full grid gap-4 justify-center md:grid-cols-2 xl:grid-cols-3'
+              ? 'w-full grid gap-4 justify-center sm:grid-cols-2 xl:grid-cols-3'
               : 'w-full  flex-cols'
           }
         >

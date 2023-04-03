@@ -13,7 +13,7 @@ const Footer = () => {
             return (
               <div
                 key={social.id}
-                className="w-[30px] h-[30px] rounded-[50%] bg-gray-200 flex items-center justify-center cursor-pointer"
+                className="w-[30px] h-[30px] rounded-[50%] bg-gray-300 flex items-center justify-center cursor-pointer hover:bg-white active:bg-white"
               >
                 {social.icon}
               </div>

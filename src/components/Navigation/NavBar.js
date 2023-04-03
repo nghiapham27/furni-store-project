@@ -29,7 +29,7 @@ const NavBar = () => {
         <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-2 px-4">
           <Brand />
           <NavList />
-          <div className="hidden min-w-[200px] md:flex justify-center items-center">
+          <div className="hidden min-w-max md:flex justify-center items-center">
             <NavCart />
             <NavUser />
           </div>
