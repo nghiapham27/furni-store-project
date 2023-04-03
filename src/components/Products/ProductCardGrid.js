@@ -1,18 +1,7 @@
 import { Link } from 'react-router-dom';
-
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
-import { FaCartPlus } from 'react-icons/fa';
-
-import { cartAction } from '../../store/cart';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-
 const ProductCardGrid = ({ singleProductData }) => {
-  const [popup, setPopup] = useState(false);
-  const { id, image, name, company, category, shipping, price, description } =
+  const { id, image, name, company, category, shipping, price } =
     singleProductData;
-
-  const cartDispatch = useDispatch();
 
   // Card of Grid layout
   return (
@@ -41,12 +30,7 @@ const ProductCardGrid = ({ singleProductData }) => {
 
         {/* title & price */}
         <p className="text-center bg-slate-100 py-2">
-          <span className="font-bold text-xl">
-            {name
-              .split(' ')
-              .map((word) => word.split('')[0].toUpperCase() + word.slice(1))
-              .join(' ')}
-          </span>
+          <span className="capitalize font-bold text-xl">{name}</span>
           <br />
           <span className="text-slate-500 font-semibold">{` ${(+price).toLocaleString(
             'en-US',

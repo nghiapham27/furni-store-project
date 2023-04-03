@@ -1,19 +1,8 @@
 import { Link } from 'react-router-dom';
 
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
-import { FaCartPlus } from 'react-icons/fa';
-
-import { cartAction } from '../../store/cart';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-
 const ProductCardList = ({ singleProductData }) => {
-  const [popup, setPopup] = useState(false);
-
   const { id, image, name, company, category, shipping, price, description } =
     singleProductData;
-
-  const cartDispatch = useDispatch();
 
   return (
     <div className="w-full shadow-xl rounded-2xl mx-auto overflow-hidden hover:border-amber-300 border-4 border-transparent hover:-translate-y-1 transition-all duration-500">
@@ -32,14 +21,7 @@ const ProductCardList = ({ singleProductData }) => {
           <div className="flex flex-wrap w-full items-start ">
             {/* title & price */}
             <p className="text-left bg-slate-100 pr-4">
-              <span className="font-bold text-xl">
-                {name
-                  .split(' ')
-                  .map(
-                    (word) => word.split('')[0].toUpperCase() + word.slice(1)
-                  )
-                  .join(' ')}
-              </span>
+              <span className="capitalize font-bold text-xl">{name}</span>
               <br />
               <span className="text-slate-500 font-semibold">{` ${(+price).toLocaleString(
                 'en-US',

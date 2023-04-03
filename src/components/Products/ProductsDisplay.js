@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { ProductCardGrid, ProductCardList, Loading } from '../';
-import { redirect } from 'react-router-dom';
 
 const ProductsDisplay = () => {
   const { loading, filterProducts, display, error } = useSelector(

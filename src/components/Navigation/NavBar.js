@@ -15,6 +15,7 @@ const NavBar = () => {
       const yPos = window.scrollY;
       yPos >= navHeight ? setStickyNav(true) : setStickyNav(false);
     });
+    // no need to remove event listener bc it's mounted in root page
   }, []);
 
   return (

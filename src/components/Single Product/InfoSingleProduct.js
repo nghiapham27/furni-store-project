@@ -46,12 +46,7 @@ const InfoSingleProduct = () => {
     <div className="flex flex-col md:pl-8">
       {/* Info Header */}
       <div>
-        <h1 className="font-section-header">
-          {name
-            .split(' ')
-            .map((word) => word.split('')[0].toUpperCase() + word.slice(1))
-            .join(' ')}
-        </h1>
+        <h1 className="capitalize font-section-header">{name}</h1>
         <StarsReview numStars={stars} reviews={reviews} />
         <p className="font-sub-header text-gray-500">
           {price.toLocaleString('en-US', {

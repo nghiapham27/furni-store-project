@@ -22,8 +22,8 @@ const ProductsFilter = () => {
   const companies = [...new Set(productsData.map((item) => item.company))];
   const colors = [...new Set(productsData.map((item) => item.colors).flat())];
 
+  // Stick the filter while scrolling down
   useEffect(() => {
-    // Stick the filter while scrolling down
     const nav = document.querySelector('nav');
     const productsFilter = document.querySelector('.products-filter');
     const navHeight = nav.getBoundingClientRect().height; //nav's height
@@ -44,6 +44,8 @@ const ProductsFilter = () => {
     });
     //Observe header
     filterObserver.observe(productsFilter);
+
+    return () => filterObserver.disconnect();
   }, []);
 
   return (

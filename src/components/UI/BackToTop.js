@@ -10,11 +10,13 @@ const BackToTop = () => {
       const yPos = window.scrollY;
       yPos > 500 ? setOnTop(true) : setOnTop(false);
     });
+    // no need to remove event listener bc it's mounted in root page
   }, []);
 
   const backToTopHandler = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
   return (
     <div
       className={`${
