@@ -5,6 +5,10 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      screens: {
+        // min-width
+        'big-screen': '1800px',
+      },
       fontFamily: { italianno: ['Italianno', 'sans-serif'] },
       backgroundImage: {
         hero: "url('/src/assets/hero.jpg')",

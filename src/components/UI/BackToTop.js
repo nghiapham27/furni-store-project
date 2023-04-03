@@ -20,10 +20,8 @@ const BackToTop = () => {
   return (
     <div
       className={`${
-        onTop
-          ? ' fixed top-[90vh] right-[5vw]'
-          : 'absolute -top-[100%] right-[5vw]'
-      } text-blue-400 z-10 w-[40px] h-[40px] bg-gray-600/50 rounded-[50%] cursor-pointer hover:text-blue-600 hover:bg-gray-300/50`}
+        onTop ? 'translate-y-[80vh]' : 'translate-y-[110vh]'
+      } text-blue-400 z-10 w-[40px] h-[40px] bg-gray-600/50 rounded-[50%] cursor-pointer hover:text-blue-600 hover:bg-gray-300/50 transition-transform duration-700 fixed right-[10vw]`}
       onClick={backToTopHandler}
     >
       <MdKeyboardDoubleArrowUp size={40} />

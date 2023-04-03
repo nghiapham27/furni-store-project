@@ -16,16 +16,16 @@ const ProductCardGrid = ({ singleProductData }) => {
         />
 
         {/* tags */}
-        <p className="flex flex-wrap justify-center bg-slate-100 pt-2">
-          <span className="tag-blue rounded-full px-2 mt-1">
+        <p className="flex flex-wrap justify-center bg-slate-100 pt-2 w-full">
+          <span className="tag-blue rounded-full px-1 mt-1">
             {company.toUpperCase()}
           </span>
-          <span className="tag-amber rounded-full px-2 mx-1 mt-1">
+          <span className="tag-amber rounded-full px-1 mx-1 mt-1">
             {category}
           </span>
 
           {shipping && (
-            <span className="tag-red rounded-full px-2 mt-1">free ship</span>
+            <span className="tag-red rounded-full px-1 mt-1">freeship</span>
           )}
         </p>
 

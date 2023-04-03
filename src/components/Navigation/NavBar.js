@@ -22,11 +22,11 @@ const NavBar = () => {
     <>
       {/*Main Nav */}
       <nav
-        className={`relative w-full max-w-[1600px] mx-auto bg-gray-200 shadow-md px-4 z-10 ${
+        className={`relative w-full max-w-[1800px] mx-auto bg-gray-200 shadow-md px-8 z-10 ${
           stickyNav ? 'sticky top-0' : ''
         }`}
       >
-        <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-2 px-4">
+        <div className="max-w-screen-2xl mx-auto flex justify-between items-center py-2 ">
           <Brand />
           <NavList />
           <div className="hidden min-w-max md:flex justify-center items-center">
