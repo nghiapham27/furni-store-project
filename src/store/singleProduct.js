@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initalSingleProduct = {
   productData: {},
   loading: false,
+  error: false,
   activeImgId: null,
   selectedColor: null,
   selectedQty: 1,
@@ -14,6 +15,9 @@ const singleProductSlice = createSlice({
   reducers: {
     loading(state, { payload }) {
       state.loading = payload;
+    },
+    error(state, { payload }) {
+      state.error = payload;
     },
 
     loadSingleProduct(state, { payload }) {

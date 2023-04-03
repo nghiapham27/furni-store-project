@@ -3,15 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { singleProductAction } from '../../store/singleProduct';
 import Loading from '../UI/Loading';
 
-const ImgSingleProduct = ({ images }) => {
+const ImgSingleProduct = () => {
   const { productData, activeImgId, loading } = useSelector(
     (state) => state.singleProduct
   );
   const dispatch = useDispatch();
 
-  if (Object.keys(productData).length === 0) {
-    return;
-  }
+  const { images = [] } = productData;
 
   return (
     <>
@@ -23,16 +21,14 @@ const ImgSingleProduct = ({ images }) => {
         <div className="w-full  ">
           {/* main img */}{' '}
           <img
-            src={
-              productData.images.filter((img) => img.id === activeImgId)[0].url
-            }
+            src={images.filter((img) => img.id === activeImgId)[0]?.url}
             alt=""
             className="object-cover w-full h-[300px] md:h-[400px] lg:h-[450px] rounded-md"
           />
           {/* thumbnails */}
           {/* should use map to list these img */}
           <div className="w-full flex justify-between py-6">
-            {productData.images.map((img) => {
+            {images.map((img) => {
               return (
                 <img
                   key={img.id}

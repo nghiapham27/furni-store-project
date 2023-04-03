@@ -13,7 +13,9 @@ import ProductCardGrid from '../Products/ProductCardGrid';
 import Loading from '../UI/Loading';
 
 const FeaturedProductsSwiper = () => {
-  const { productsData, loading } = useSelector((state) => state.products);
+  const { productsData, loading, error } = useSelector(
+    (state) => state.products
+  );
 
   // get featured products list
   const featuredProductsList = productsData.filter(
@@ -22,6 +24,13 @@ const FeaturedProductsSwiper = () => {
 
   return (
     <>
+      {error && (
+        <div className="text-center text-xl font-bold text-red-500">
+          {error}
+          <br />
+          When loading featured products
+        </div>
+      )}
       {loading ? (
         <Loading text={'Loading Featured Products...'} />
       ) : (

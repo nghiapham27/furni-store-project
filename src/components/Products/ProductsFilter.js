@@ -169,7 +169,6 @@ const ProductsFilter = () => {
                 checked={ship ? true : false}
                 className="h-4 w-4 rounded border-gray-300"
                 onChange={(e) => {
-                  console.log(e.target.value);
                   filterDispatch(
                     productsAction.setFilter({
                       type: 'ship',

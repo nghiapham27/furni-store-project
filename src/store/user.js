@@ -5,7 +5,6 @@ const initialUser = {
   error: null,
   user: null,
   loginWithRedirect: null,
-  //   logout,
 };
 
 const userSlice = createSlice({
@@ -16,7 +15,6 @@ const userSlice = createSlice({
       const { isAuthenticated, user } = payload;
       state.isAuthenticated = isAuthenticated;
       state.user = user;
-      //   state.loginWithRedirect = loginWithRedirect;
     },
   },
 });

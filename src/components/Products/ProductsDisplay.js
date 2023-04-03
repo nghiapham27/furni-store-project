@@ -1,12 +1,22 @@
 import { useSelector } from 'react-redux';
 import { ProductCardGrid, ProductCardList, Loading } from '../';
+import { redirect } from 'react-router-dom';
 
 const ProductsDisplay = () => {
-  const { loading, filterProducts, display } = useSelector(
+  const { loading, filterProducts, display, error } = useSelector(
     (state) => state.products
   );
+
+  if (error) {
+    console.log(error);
+  }
+
   return (
     <>
+      {/* Error when fetching API */}
+      {error && <div className="text-xl font-bold text-red-500">{error}</div>}
+
+      {/* Display Products */}
       {loading ? (
         <Loading text={'Loading Products Data...'} />
       ) : (
@@ -17,7 +27,7 @@ const ProductsDisplay = () => {
               : 'w-full  flex-cols'
           }
         >
-          {filterProducts.length === 0 && (
+          {filterProducts.length === 0 && !error && (
             <div className="font-bold text-red-500">
               Sorry! No products matched your search
             </div>

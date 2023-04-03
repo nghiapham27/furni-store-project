@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialProducts = {
   loading: false,
+  error: false,
   productsData: [],
   filterProducts: [],
   filterInput: {
@@ -71,6 +72,10 @@ const productsSlice = createSlice({
     loading(state, { payload }) {
       state.loading = payload;
     },
+    // error
+    error(state, { payload }) {
+      state.error = payload;
+    },
     // initial fetch
     initiateProductsData(state, { payload }) {
       transformPrice(payload);
@@ -81,6 +86,7 @@ const productsSlice = createSlice({
         (key) => (state.filterInput[key] = initialProducts.filterInput[key])
       );
       state.filterInput.price = state.maxPrice;
+      state.error = false;
     },
 
     // filter

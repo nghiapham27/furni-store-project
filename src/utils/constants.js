@@ -30,3 +30,5 @@ export const socialsList = [
 export const productsAPI = 'https://course-api.com/react-store-products';
 export const singleProductAPI =
   'https://course-api.com/react-store-single-product?id=';
+
+export const timeout = 10; // in seconds
