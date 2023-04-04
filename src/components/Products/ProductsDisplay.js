@@ -22,7 +22,10 @@ const ProductsDisplay = () => {
         <Loading text={'Loading Products Data...'} />
       ) : (
         <motion.ul
-          layout
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -100 }}
+          transition={{ duration: 1.5, ease: [0.6, 0.01, 0.05, 0.9] }}
           className={
             display === 'grid'
               ? 'w-full grid gap-4 justify-center sm:grid-cols-2 xl:grid-cols-3'

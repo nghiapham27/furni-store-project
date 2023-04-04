@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { Hero, Features, FeaturedProducts, Newsletter } from '../components';
 import AnimationPage from './AnimationPage';
 

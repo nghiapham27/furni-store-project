@@ -44,7 +44,7 @@ const ProductsFilter = () => {
     });
     //Observe header
     filterObserver.observe(productsFilter);
-
+    // cleanup function
     return () => filterObserver.disconnect();
   }, []);
 

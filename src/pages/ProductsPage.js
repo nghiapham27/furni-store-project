@@ -15,11 +15,11 @@ const ProductsPage = () => {
 
   return (
     <section className="max-w-[1500px] mx-auto grid justify-center md:grid-cols-4 md:gap-4">
-      <AnimationPage>
-        <div className="col-span-1">
-          <ProductsFilter />
-        </div>
-      </AnimationPage>
+      {/* <AnimationPage> */}
+      <div className="col-span-1">
+        <ProductsFilter />
+      </div>
+      {/* </AnimationPage> */}
       <div className="w-full md:col-span-3">
         <ProductsSort />
         <ProductsDisplay />
