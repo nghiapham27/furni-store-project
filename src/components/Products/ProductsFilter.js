@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
 
 import FilterDropdown from './FilterDropdown';
-import { productsAction } from '../../store/products';
+import { productsAction } from '../../features/products/products';
 import { useEffect, useState } from 'react';
 
 const ProductsFilter = () => {

@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
-import { singleProductAction } from '../../store/singleProduct';
-import { cartAction } from '../../store/cart';
+import { singleProductAction } from '../../features/singleProduct';
+import { cartAction } from '../../features/cart/cart';
 
 import { StarsReview } from '..';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';

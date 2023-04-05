@@ -5,7 +5,7 @@ import { Outlet } from 'react-router-dom';
 
 import { MainWrapper, NavBar, Footer, BackToTop } from '../components';
 
-import { userAction } from '../store/user';
+import { userAction } from '../features/user/user';
 
 const RootPage = () => {
   const { isAuthenticated, user } = useAuth0();

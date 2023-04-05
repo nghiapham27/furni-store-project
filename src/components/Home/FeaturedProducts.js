@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import FeaturedProductsSwiper from './FeaturedProductsSwiper';
-import { fetchProducts } from './../../store/actions';
+import { fetchProducts } from './../../features/actions';
 
 const FeaturedProducts = () => {
   const dispatch = useDispatch();

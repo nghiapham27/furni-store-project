@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ImgSingleProduct, InfoSingleProduct } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleProduct } from '../store/actions';
+import { fetchSingleProduct } from '../features/actions';
 
 const SingleProductPage = () => {
   const { productId } = useParams();

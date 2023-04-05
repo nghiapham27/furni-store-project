@@ -1,4 +1,4 @@
-import { productsAction } from './products';
+import { productsAction } from './products/products';
 import { singleProductAction } from './singleProduct';
 import { productsAPI, singleProductAPI, timeout } from '../utils/constants';
 

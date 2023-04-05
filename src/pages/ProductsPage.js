@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { ProductsDisplay, ProductsFilter, ProductsSort } from '../components';
-import { fetchProducts } from '../store/actions';
+import { fetchProducts } from '../features/actions';
 
 const ProductsPage = () => {
   const dispatch = useDispatch();

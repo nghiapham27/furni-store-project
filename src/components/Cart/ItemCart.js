@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { cartAction } from '../../store/cart';
+import { cartAction } from '../../features/cart/cart';
 
 import { MdDelete } from 'react-icons/md';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
