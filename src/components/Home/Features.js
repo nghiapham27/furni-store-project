@@ -4,7 +4,7 @@ import featureImg2 from '../../assets/feature-2.jpg';
 
 const Features = () => {
   return (
-    <div className="home-features flex flex-col mt-40 md:mt-28">
+    <div className="flex flex-col mt-40 md:mt-28">
       <div className="h-auto md:h-[400px] grid md:grid-cols-2 md:gap-4 md:items-center shadow-lg bg-gray-100 rounded-2xl overflow-hidden px-4 py-4">
         {/* img */}
         <div className="w-full">
