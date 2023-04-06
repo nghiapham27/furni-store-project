@@ -15,7 +15,7 @@ export const statsData = [
 ];
 
 export const sortBy = [
-  { text: '---', type: null },
+  { text: '---', type: '' },
   { text: 'Price (Lowest)', type: 'ascending' },
   { text: 'Price (Highest)', type: 'descending' },
 ];

@@ -1,4 +1,3 @@
-import { productsAction } from './products/products';
 import { singleProductAction } from './singleProduct';
 import { productsAPI, singleProductAPI, timeout } from '../utils/constants';
 
@@ -11,31 +10,6 @@ async function fetchWithTimeout(url, timeoutAfter) {
   clearTimeout(id);
   return response;
 }
-
-export const fetchProducts = () => {
-  return async (dispatch) => {
-    dispatch(productsAction.loading(true));
-    try {
-      const response = await fetchWithTimeout(productsAPI, timeout);
-      if (!response.ok) {
-        throw new Error(response.status + ' ' + response.statusText);
-      }
-
-      const data = await response.json();
-      dispatch(productsAction.initiateProductsData(data));
-      dispatch(productsAction.loading(false));
-    } catch (error) {
-      dispatch(productsAction.loading(false));
-      // request timeout error
-      if (error.name === 'AbortError') {
-        dispatch(productsAction.error(`Error: Request Timeout`));
-        return;
-      }
-      // API fetching error
-      dispatch(productsAction.error(`${error}`));
-    }
-  };
-};
 
 export const fetchSingleProduct = (ProductId) => {
   return async (dispatch) => {

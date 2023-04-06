@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { fetchWithTimeout } from '../../utils/fetchWithTimeout';
+import { productsAPI, timeout } from '../../utils/constants';
 
 const initialProducts = {
   loading: false,
-  error: false,
+  error: null,
   productsData: [],
   filterProducts: [],
   filterInput: {
@@ -14,56 +16,64 @@ const initialProducts = {
     price: 0,
   },
   maxPrice: 0,
-  sortType: '---',
+  sortType: '',
   display: 'grid',
 };
 
+// fetching products data from API
+export const fetchProductsData = createAsyncThunk(
+  'products/fetchProductsData',
+  async (_, thunkAPI) => {
+    try {
+      const response = await fetchWithTimeout(productsAPI, timeout);
+      if (!response.ok) {
+        throw new Error(response.status + ' ' + response.statusText);
+      }
+      return response.json();
+    } catch (error) {
+      // customize reject value for request timeout
+      if (error.name === 'AbortError')
+        return thunkAPI.rejectWithValue('Error: Request Timeout');
+      // reject value for request errror
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Sort Handler
+const sortHandler = (data, type) => {
+  if (type === 'ascending') {
+    return data.sort((a, b) => a.price - b.price);
+  }
+  if (type === 'descending') {
+    return data.sort((a, b) => b.price - a.price);
+  }
+  return data;
+};
+
 // Filter Hanlder
-const filterHandler = (state) => {
-  const { searchName, category, company, color, ship, price } =
-    state.filterInput;
-  state.filterProducts = state.productsData.filter((product) => {
+const filterHandler = (input, data, sort, maxPrice) => {
+  const { searchName, category, company, color, ship, price } = input;
+  // filter
+  const filterData = data.filter((product) => {
     if (
       (searchName === '' || product.name.includes(searchName)) &&
       (category === 'all' || product.category === category) &&
       (company === 'all' || product.company === company) &&
       (color === 'all' || product.colors.includes(color)) &&
       (ship === false || product.shipping === ship) &&
-      (price === 5000 || product.price <= price)
+      (price === maxPrice || product.price <= price)
     ) {
       return true;
     }
     return false;
   });
+  // sort
+  sortHandler(filterData, sort);
+  return filterData;
 };
 
-// Sort Handler
-const sortHandler = (state, payload) => {
-  if (payload === 'ascending') {
-    state.filterProducts.sort((a, b) => a.price - b.price);
-  }
-  if (payload === 'descending') {
-    state.filterProducts.sort((a, b) => b.price - a.price);
-  }
-};
-
-// Processing price value
-const transformPrice = (payload) => {
-  payload.forEach((product) => (product.price = product.price / 100));
-};
-
-// Find the max price
-const findMaxPrice = (state) => {
-  state.maxPrice = state.productsData
-    .map((item) => item.price)
-    .reduce((max, price) => {
-      if (price > max) {
-        return price;
-      }
-      return max;
-    }, 0);
-};
-
+// CREATE PRODUCTS SLICE
 const productsSlice = createSlice({
   name: 'filter',
   initialState: initialProducts,
@@ -76,44 +86,73 @@ const productsSlice = createSlice({
     error(state, { payload }) {
       state.error = payload;
     },
-    // initial fetch
-    initiateProductsData(state, { payload }) {
-      transformPrice(payload);
-      state.productsData = payload;
-      state.filterProducts = payload;
-      findMaxPrice(state);
-      Object.keys(state.filterInput).map(
-        (key) => (state.filterInput[key] = initialProducts.filterInput[key])
-      );
-      state.filterInput.price = state.maxPrice;
-      state.error = false;
-    },
-
     // filter
     setFilter(state, { payload }) {
+      // update filter input
       payload.type !== 'ship'
         ? (state.filterInput[payload.type] = payload.value)
         : (state.filterInput['ship'] = !state.filterInput['ship']);
-      filterHandler(state);
+      // update filter products
+      state.filterProducts = filterHandler(
+        state.filterInput,
+        state.productsData,
+        state.sortType,
+        state.maxPrice
+      );
     },
     // sort
     sort(state, { payload }) {
+      // update sort type
       state.sortType = payload;
-      sortHandler(state, payload);
+      // update filter products
+      state.filterProducts = sortHandler(state.filterProducts, payload);
     },
-    // sort
+    // display
     display(state, { payload }) {
       state.display = payload;
     },
     // clear filter
     clearFilter(state) {
-      Object.keys(state.filterInput).map(
-        (key) => (state.filterInput[key] = initialProducts.filterInput[key])
-      );
-      state.filterProducts = state.productsData;
+      state.filterInput = { ...initialProducts.filterInput };
       state.filterInput.price = state.maxPrice;
       state.sortType = initialProducts.sortType;
+      state.filterProducts = state.productsData;
     },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchProductsData.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProductsData.fulfilled, (state, { payload }) => {
+        state.loading = false;
+        // transform price
+        payload.forEach((product) => (product.price = product.price / 100));
+        // set data
+        state.productsData = payload;
+        // find the max price
+        state.maxPrice = payload
+          .map((item) => item.price)
+          .reduce((max, price) => {
+            if (price > max) {
+              return price;
+            }
+            return max;
+          }, 0);
+        // set price in filter input = max price
+        if (!state.filterInput.price) state.filterInput.price = state.maxPrice;
+        // update filter products
+        state.filterProducts = filterHandler(
+          state.filterInput,
+          state.productsData,
+          state.sortType,
+          state.maxPrice
+        );
+      })
+      .addCase(fetchProductsData.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      });
   },
 });
 

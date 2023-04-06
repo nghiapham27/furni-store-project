@@ -7,9 +7,8 @@ import { productsAction } from '../../features/products/products';
 
 const ProductsSort = () => {
   // set up filterInput subscription
-  const { filterProducts, sortType } = useSelector((state) => state.products);
-  const filterDispatch = useDispatch();
-
+  const { sortType, filterProducts } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
   return (
     <div className="w-full flex flex-col md:flex-row justify-between items-center mb-4 p-1">
       {/* Display mode */}
@@ -18,12 +17,12 @@ const ProductsSort = () => {
           <IoGrid
             size={25}
             className="cursor-pointer border border-black rounded-sm"
-            onClick={() => filterDispatch(productsAction.display('grid'))}
+            onClick={() => dispatch(productsAction.display('grid'))}
           />
           <IoList
             size={25}
             className="cursor-pointer border border-black rounded-sm mx-2"
-            onClick={() => filterDispatch(productsAction.display('list'))}
+            onClick={() => dispatch(productsAction.display('list'))}
           />
         </p>
         {/* The numer of products showed */}
@@ -45,7 +44,7 @@ const ProductsSort = () => {
           className="bg-gray-300 outline-none border rounded-md cursor-pointer"
           value={sortType}
           onChange={(e) => {
-            filterDispatch(productsAction.sort(e.target.value));
+            dispatch(productsAction.sort(e.target.value));
           }}
         >
           {sortBy.map((sort) => {

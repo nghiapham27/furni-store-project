@@ -7,6 +7,11 @@ import { productsAction } from '../../features/products/products';
 import { useEffect, useState } from 'react';
 
 const ProductsFilter = () => {
+  const [filterMenu, setFilterMenu] = useState({
+    categories: [],
+    companies: [],
+    colors: [],
+  });
   // sticky filter state
   const [stick, setStick] = useState(false);
   // set up filterInput subscription
@@ -14,13 +19,16 @@ const ProductsFilter = () => {
     (state) => state.products
   );
   const { searchName, category, company, color, ship, price } = filterInput;
-  // dispatch actions
-  const filterDispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // Filter List UI to show
-  const categories = [...new Set(productsData.map((item) => item.category))];
-  const companies = [...new Set(productsData.map((item) => item.company))];
-  const colors = [...new Set(productsData.map((item) => item.colors).flat())];
+  useEffect(() => {
+    // Filter List UI to show
+    setFilterMenu({
+      categories: [...new Set(productsData.map((item) => item.category))],
+      companies: [...new Set(productsData.map((item) => item.company))],
+      colors: [...new Set(productsData.map((item) => item.colors).flat())],
+    });
+  }, [productsData]);
 
   // Stick the filter while scrolling down
   useEffect(() => {
@@ -65,7 +73,7 @@ const ProductsFilter = () => {
               placeholder="Search"
               className=" w-full bg-gray-200 rounded-full placeholder:text-sm py-1 pl-7 outline-none border hover:border-amber-200 focus:border-amber-400 focus:bg-gray-50"
               onChange={(e) =>
-                filterDispatch(
+                dispatch(
                   productsAction.setFilter({
                     type: 'searchName',
                     value: e.target.value,
@@ -80,13 +88,13 @@ const ProductsFilter = () => {
         <div className="grid grid-cols-2 gap-4 items-start pt-4 md:flex md:flex-col md:items-center">
           {/* Category */}
           <FilterDropdown filterName="Category">
-            {['all', ...categories].map((item) => {
+            {['all', ...filterMenu.categories].map((item) => {
               return (
                 <li
                   key={item}
-                  className="flex justify-between items-center cursor-pointer pb-2"
+                  className="flex justify-between items-center cursor-pointer mb-2 py-1 px-2 rounded-full hover:bg-gray-200"
                   onClick={() => {
-                    filterDispatch(
+                    dispatch(
                       productsAction.setFilter({
                         type: 'category',
                         value: item,
@@ -105,13 +113,13 @@ const ProductsFilter = () => {
 
           {/* Company */}
           <FilterDropdown filterName="Company">
-            {['all', ...companies].map((item) => {
+            {['all', ...filterMenu.companies].map((item) => {
               return (
                 <li
                   key={item}
-                  className="flex justify-between items-center cursor-pointer pb-2"
+                  className="flex justify-between items-center cursor-pointer mb-2 py-1 px-2 rounded-full hover:bg-gray-200"
                   onClick={() => {
-                    filterDispatch(
+                    dispatch(
                       productsAction.setFilter({
                         type: 'company',
                         value: item,
@@ -131,15 +139,13 @@ const ProductsFilter = () => {
           {/* Colors */}
           <FilterDropdown filterName="Color">
             <div className="grid grid-cols-3 gap-2 py-2">
-              {['all', ...colors].map((item, index) => {
+              {['all', ...filterMenu.colors].map((item, index) => {
                 return (
                   <li
                     key={item}
-                    className={`flex justify-start ${
-                      item === 'all' ? 'items-start' : 'items-center'
-                    } cursor-pointer`}
+                    className={`flex cursor-pointer `}
                     onClick={() => {
-                      filterDispatch(
+                      dispatch(
                         productsAction.setFilter({
                           type: 'color',
                           value: item,
@@ -148,7 +154,7 @@ const ProductsFilter = () => {
                     }}
                   >
                     <div
-                      className="flex justify-center items-center w-5 h-5 rounded-[50%]"
+                      className="flex justify-center items-center w-5 h-5 rounded-[50%]  hover:border-2 hover:border-amber-700"
                       style={{ backgroundColor: item !== 'all' && `${item}` }}
                     >
                       {item === 'all' && 'All'}
@@ -170,8 +176,8 @@ const ProductsFilter = () => {
                 type="checkbox"
                 checked={ship ? true : false}
                 className="h-4 w-4 rounded border-gray-300"
-                onChange={(e) => {
-                  filterDispatch(
+                onChange={() => {
+                  dispatch(
                     productsAction.setFilter({
                       type: 'ship',
                     })
@@ -202,7 +208,7 @@ const ProductsFilter = () => {
               step="10"
               className="w-full h-2 bg-gray-300 rounded-lg cursor-pointer outline-none mx-2 md:mx-0 md:my-2"
               onChange={(e) => {
-                filterDispatch(
+                dispatch(
                   productsAction.setFilter({
                     type: 'price',
                     value: +e.target.value,
@@ -224,7 +230,7 @@ const ProductsFilter = () => {
         <div className="w-full max-w-[300px] mx-auto flex justify-center">
           <p
             className="cursor-pointer underline active:text-amber-300"
-            onClick={() => filterDispatch(productsAction.clearFilter())}
+            onClick={() => dispatch(productsAction.clearFilter())}
           >
             Clear All Filters
           </p>

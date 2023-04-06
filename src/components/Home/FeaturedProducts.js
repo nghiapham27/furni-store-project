@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import FeaturedProductsSwiper from './FeaturedProductsSwiper';
-import { fetchProducts } from './../../features/actions';
+import { fetchProductsData } from '../../features/products/products';
 
 const FeaturedProducts = () => {
   const dispatch = useDispatch();
 
   // fetch products data
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsData());
   }, []);
 
   return (

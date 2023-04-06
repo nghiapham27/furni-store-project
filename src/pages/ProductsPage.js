@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ProductsDisplay, ProductsFilter, ProductsSort } from '../components';
-import { fetchProducts } from '../features/actions';
+import { ProductsDisplay, ProductsFilter } from '../components';
+import { fetchProductsData } from '../features/products/products';
 
 const ProductsPage = () => {
   const dispatch = useDispatch();
 
   // fetch products data
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProductsData());
   }, []);
 
   return (
@@ -18,7 +18,6 @@ const ProductsPage = () => {
         <ProductsFilter />
       </div>
       <div className="w-full md:col-span-3">
-        <ProductsSort />
         <ProductsDisplay />
       </div>
     </section>
