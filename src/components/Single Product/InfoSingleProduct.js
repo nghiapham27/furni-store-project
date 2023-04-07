@@ -1,20 +1,30 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
-
-import { singleProductAction } from '../../features/singleProduct';
+import { singleProductAction } from '../../features/singleProduct/singleProduct';
 import { cartAction } from '../../features/cart/cart';
 
 import { StarsReview } from '..';
 import { FiPlusCircle, FiMinusCircle } from 'react-icons/fi';
+import { notification } from 'antd';
 
 const InfoSingleProduct = () => {
-  const [maxQtyAlert, setMaxQtyAlert] = useState(false);
-  const [itemAdded, setItemAdded] = useState(false);
   const { productData, loading, selectedColor, selectedQty } = useSelector(
     (state) => state.singleProduct
   );
   const { list } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  // setup for notification
+  const [api, contextHolder] = notification.useNotification();
+  const showNotification = (type, text) => {
+    api[type]({
+      description: text,
+      placement: 'topRight',
+      style: {
+        backgroundColor: '#f3f4f6',
+        color: `${type === 'warning' ? '#f43f5e' : 'black'} `,
+        fontWeight: 'bold',
+      },
+    });
+  };
 
   if (Object.keys(productData).length === 0 || loading) {
     return;
@@ -39,11 +49,12 @@ const InfoSingleProduct = () => {
   );
 
   itemInCart
-    ? (availableQty = itemInCart.availableQty)
+    ? (availableQty = itemInCart.stock - itemInCart.qty)
     : (availableQty = stock);
 
   return (
     <div className="flex flex-col md:pl-8">
+      {contextHolder}
       {/* Info Header */}
       <div>
         <h1 className="capitalize font-section-header">{name}</h1>
@@ -66,7 +77,9 @@ const InfoSingleProduct = () => {
           {availableQty > 0 ? (
             <span>{availableQty}</span>
           ) : (
-            <span className="text-red-500">Out of Stock</span>
+            <span className="text-red-500 font-semibold bg-yellow-300">
+              Out of Stock
+            </span>
           )}
         </p>
         <p className="flex">
@@ -88,7 +101,7 @@ const InfoSingleProduct = () => {
                 <li key={color}>
                   <div
                     className={`w-5 h-5 rounded-[50%] mr-2 ring-yellow-700 active:ring-2 cursor-pointer ${
-                      color === selectedColor ? 'ring-2' : ''
+                      color === selectedColor ? 'ring-2 ring-amber-700' : ''
                     }`}
                     style={{ backgroundColor: `${color}` }}
                     onClick={() => {
@@ -113,24 +126,25 @@ const InfoSingleProduct = () => {
             size={23}
             className="cursor-pointer"
             onClick={() => {
-              if (selectedQty === availableQty) {
-                setMaxQtyAlert(true);
-                setTimeout(() => setMaxQtyAlert(false), 3000);
+              if (selectedQty >= availableQty) {
+                showNotification(
+                  'warning',
+                  'The selected quantity reached quantity available in stock!'
+                );
               }
               if (selectedQty < availableQty)
                 dispatch(singleProductAction.addQty());
             }}
           />
-
-          {maxQtyAlert && (
+          {selectedQty > availableQty && (
             <div className=" text-sm text-red-500 absolute top-8 left-0">
-              You have reached maximum quantity!
+              The selected quantity exceeds quantity available in stock!
             </div>
           )}
         </div>
       </div>
       {/* Add to Cart */}
-      <div className="flex h-min mt-8">
+      <div className="flex h-min mt-14">
         <button
           className={` ${
             selectedQty > availableQty ? 'btn-disabled' : 'btn-primary'
@@ -144,15 +158,11 @@ const InfoSingleProduct = () => {
                 qtyAdded: selectedQty,
               })
             );
-            setItemAdded(true);
-            setTimeout(() => setItemAdded(false), 1000);
+            showNotification('success', 'Item added to your cart');
           }}
         >
           Add to Cart
         </button>
-        {itemAdded && (
-          <span className="ml-2 text-gray-500 my-auto">Item added!</span>
-        )}
       </div>
     </div>
   );

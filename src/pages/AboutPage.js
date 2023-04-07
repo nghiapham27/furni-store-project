@@ -1,6 +1,5 @@
 import AnimationPage from './AnimationPage';
 import AboutImg from '../assets/about.jpg';
-
 const AboutPage = () => {
   return (
     <AnimationPage>

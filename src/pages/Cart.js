@@ -6,12 +6,12 @@ import AnimationPage from './AnimationPage';
 import { FaShoppingCart } from 'react-icons/fa';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { ItemCart } from '../components';
+import { useEffect } from 'react';
 
 const Cart = () => {
   // set up the subscription for cart
-  const { list, shippingFee, subTotal, totalPrice } = useSelector(
-    (state) => state.cart
-  );
+  const { list, cartAgg } = useSelector((state) => state.cart);
+  const { shippingFee, subTotal, totalPrice } = cartAgg;
   const { loginWithRedirect } = useAuth0();
   const { isAuthenticated } = useSelector((state) => state.user);
 
@@ -66,7 +66,7 @@ const Cart = () => {
             <div className="py-4 flex-col justify-between">
               <p className="flex justify-between border-t border-t-gray-500">
                 Subtotal{' '}
-                <span className="text-xl">
+                <span className="font-sub-header">
                   {subTotal.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',
@@ -86,7 +86,7 @@ const Cart = () => {
               </p>
               <p className="uppercase font-bold pt-4 flex justify-between">
                 Total{' '}
-                <span className="text-2xl">
+                <span className="font-section-header">
                   {totalPrice.toLocaleString('en-US', {
                     style: 'currency',
                     currency: 'USD',

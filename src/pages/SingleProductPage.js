@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ImgSingleProduct, InfoSingleProduct } from '../components';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleProduct } from '../features/actions';
+import { fetchSingleProductData } from '../features/singleProduct/singleProduct';
 
 const SingleProductPage = () => {
   const { productId } = useParams();
@@ -13,11 +13,11 @@ const SingleProductPage = () => {
 
   // fetch single product data
   useEffect(() => {
-    dispatch(fetchSingleProduct(productId));
+    dispatch(fetchSingleProductData(productId));
   }, []);
 
   return (
-    <section className="w-full md:px-4">
+    <section className="w-full">
       {error ? (
         <div className="col-span-2 text-center text-xl font-bold text-red-500">
           {error}

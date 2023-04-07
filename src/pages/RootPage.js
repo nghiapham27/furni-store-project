@@ -23,7 +23,7 @@ const RootPage = () => {
   return (
     <MainWrapper>
       <NavBar />
-      <section className="container w-full h-full flex-auto mx-auto py-8">
+      <section className="container w-full h-full flex-auto mx-auto px-1 py-8">
         <Outlet />
       </section>
       <BackToTop />

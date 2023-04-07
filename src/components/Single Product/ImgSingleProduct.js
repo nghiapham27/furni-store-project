@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { AnimationPage } from '../../pages';
-import { singleProductAction } from '../../features/singleProduct';
+import { singleProductAction } from '../../features/singleProduct/singleProduct';
 import Loading from '../UI/Loading';
 
 const ImgSingleProduct = () => {
