@@ -2,6 +2,7 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
+import { ConfigProvider } from 'antd';
 
 import {
   Root,
@@ -46,7 +47,15 @@ function App() {
   ]);
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#f59e0b',
+          },
+        }}
+      >
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </Provider>
   );
 }

@@ -12,6 +12,7 @@ const InfoSingleProduct = () => {
   );
   const { list } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   // setup for notification
   const [api, contextHolder] = notification.useNotification();
   const showNotification = (type, text) => {
@@ -26,6 +27,7 @@ const InfoSingleProduct = () => {
     });
   };
 
+  // check if data loaded or not
   if (Object.keys(productData).length === 0 || loading) {
     return;
   }
