@@ -71,8 +71,6 @@ const ProductsFilter = () => {
     return () => filterObserver.disconnect();
   }, []);
 
-  console.log('render', filterInput);
-
   return (
     <div
       className={`products-filter w-full pb-4 md:px-0 ${
