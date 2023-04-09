@@ -1,10 +1,12 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
 
 import FilterDropdown from './FilterDropdown';
+import SearchSpin from '../UI/SearchSpin';
 import { productsAction } from '../../features/products/products';
-import { useEffect, useState } from 'react';
+import useDebounceInput from '../../hooks/useDebounceInput';
 
 const ProductsFilter = () => {
   const [filterMenu, setFilterMenu] = useState({
@@ -12,6 +14,8 @@ const ProductsFilter = () => {
     companies: [],
     colors: [],
   });
+  // use debounce for search & price filter input
+  const { isSearching, debounceInput } = useDebounceInput();
   // sticky filter state
   const [stick, setStick] = useState(false);
   // set up filterInput subscription
@@ -56,6 +60,8 @@ const ProductsFilter = () => {
     return () => filterObserver.disconnect();
   }, []);
 
+  // console.log('render', searchName, price, isSearching);
+
   return (
     <div
       className={`products-filter w-full pb-4 md:px-0 ${
@@ -69,20 +75,16 @@ const ProductsFilter = () => {
             <AiOutlineSearch size={20} className="absolute left-1" />
             <input
               type="text"
-              value={searchName}
               placeholder="Search"
+              defaultValue={searchName}
               className=" w-full bg-gray-200 rounded-full placeholder:text-sm py-1 pl-7 outline-none border hover:border-amber-200 focus:border-amber-400 focus:bg-gray-50"
-              onChange={(e) =>
-                dispatch(
-                  productsAction.setFilter({
-                    type: 'searchName',
-                    value: e.target.value,
-                  })
-                )
-              }
+              onChange={(e) => {
+                debounceInput('searchName', e.target.value);
+              }}
             />
           </div>
         </div>
+        {isSearching && <SearchSpin />}
 
         {/* Select options */}
         <div className="grid grid-cols-2 gap-4 items-start pt-4 md:flex md:flex-col md:items-center">
@@ -201,29 +203,22 @@ const ProductsFilter = () => {
             <input
               id="price-range"
               type="range"
-              // defaultValue={maxPrice + 10}
-              value={price}
+              defaultValue={price}
               min="0"
               max={maxPrice + 10}
               step="10"
               className="w-full h-2 bg-gray-300 rounded-lg cursor-pointer outline-none mx-2 md:mx-0 md:my-2"
               onChange={(e) => {
-                dispatch(
-                  productsAction.setFilter({
-                    type: 'price',
-                    value: +e.target.value,
-                  })
-                );
+                debounceInput('price', +e.target.value);
               }}
             />
-            <p className="min-w-[60px] md:text-left">{`${price.toLocaleString(
-              'en-US',
-              {
+            <p className="min-w-[60px] md:text-left">
+              {`${price.toLocaleString('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 maximumFractionDigits: 0,
-              }
-            )}`}</p>
+              })}`}
+            </p>
           </div>
         </div>
         {/* Clear Filter */}
