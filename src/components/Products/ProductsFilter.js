@@ -29,8 +29,8 @@ const ProductsFilter = () => {
   const [priceInput, setPriceInput] = useState(price);
 
   useEffect(() => {
-    setPriceInput(maxPrice);
-  }, [maxPrice]);
+    setPriceInput(price);
+  }, [filterInput.price]);
 
   // sticky filter state
   const [stick, setStick] = useState(false);
@@ -71,7 +71,7 @@ const ProductsFilter = () => {
     return () => filterObserver.disconnect();
   }, []);
 
-  // console.log('render', searchName, priceInput, searchInput, filterInput);
+  console.log('render', filterInput);
 
   return (
     <div

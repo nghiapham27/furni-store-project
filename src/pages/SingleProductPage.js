@@ -6,6 +6,7 @@ import { ImgSingleProduct, InfoSingleProduct } from '../components';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchSingleProductData } from '../features/singleProduct/singleProduct';
 
+let idFetched;
 const SingleProductPage = () => {
   const { productId } = useParams();
   const { error } = useSelector((state) => state.singleProduct);
@@ -13,7 +14,13 @@ const SingleProductPage = () => {
 
   // fetch single product data
   useEffect(() => {
+    if (idFetched === productId) {
+      return;
+    }
     dispatch(fetchSingleProductData(productId));
+    return () => {
+      idFetched = productId;
+    };
   }, []);
 
   return (
