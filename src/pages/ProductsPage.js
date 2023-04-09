@@ -4,12 +4,20 @@ import { useDispatch } from 'react-redux';
 import { ProductsDisplay, ProductsFilter } from '../components';
 import { fetchProductsData } from '../features/products/products';
 
+let isFetched = false;
 const ProductsPage = () => {
   const dispatch = useDispatch();
 
   // fetch products data
   useEffect(() => {
+    if (isFetched) {
+      return;
+    }
+
     dispatch(fetchProductsData());
+    return () => {
+      isFetched = true;
+    };
   }, []);
 
   return (

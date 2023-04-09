@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
@@ -23,7 +23,7 @@ const ProductsFilter = () => {
   const dispatch = useDispatch();
 
   // use debounce for search & price filter input
-  const { isChanging, inputType, debounceInput } = useDebounceInput();
+  const { isChanging, debounceInput } = useDebounceInput();
   // search & price input state
   const [searchInput, setSearchInput] = useState(searchName);
   const [priceInput, setPriceInput] = useState(price);
@@ -72,7 +72,6 @@ const ProductsFilter = () => {
   }, []);
 
   // console.log('render', searchName, priceInput, searchInput, filterInput);
-  console.log(isChanging);
 
   return (
     <div
