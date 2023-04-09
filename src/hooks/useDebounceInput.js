@@ -3,18 +3,17 @@ import { useDispatch } from 'react-redux';
 import { productsAction } from '../features/products/products';
 
 let timeoutId;
-let initialTyping = true;
+let intialChange = true;
 const useDebounceInput = () => {
   const dispatch = useDispatch();
-  const [isSearching, setIsSearching] = useState(false);
+  const [isChanging, setIsChanging] = useState(false);
 
+  let inputType;
   const debounceInput = (debounceType, input) => {
     clearTimeout(timeoutId);
-    if (debounceType === 'searchName') {
-      if (initialTyping === true) {
-        setIsSearching(true);
-        initialTyping = false;
-      }
+    if (intialChange === true) {
+      setIsChanging(true);
+      intialChange = false;
     }
 
     timeoutId = setTimeout(() => {
@@ -24,14 +23,12 @@ const useDebounceInput = () => {
           value: input,
         })
       );
-      if (debounceType === 'searchName') {
-        setIsSearching(false);
-        initialTyping = true;
-      }
+      setIsChanging(false);
+      intialChange = true;
     }, 500);
   };
 
-  return { isSearching, debounceInput };
+  return { isChanging, debounceInput };
 };
 
 export default useDebounceInput;

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { AiOutlineSearch, AiOutlineCheck } from 'react-icons/ai';
@@ -14,16 +14,26 @@ const ProductsFilter = () => {
     companies: [],
     colors: [],
   });
-  // use debounce for search & price filter input
-  const { isSearching, debounceInput } = useDebounceInput();
-  // sticky filter state
-  const [stick, setStick] = useState(false);
+
   // set up filterInput subscription
   const { productsData, filterInput, maxPrice } = useSelector(
     (state) => state.products
   );
   const { searchName, category, company, color, ship, price } = filterInput;
   const dispatch = useDispatch();
+
+  // use debounce for search & price filter input
+  const { isChanging, inputType, debounceInput } = useDebounceInput();
+  // search & price input state
+  const [searchInput, setSearchInput] = useState(searchName);
+  const [priceInput, setPriceInput] = useState(price);
+
+  useEffect(() => {
+    setPriceInput(maxPrice);
+  }, [maxPrice]);
+
+  // sticky filter state
+  const [stick, setStick] = useState(false);
 
   useEffect(() => {
     // Filter List UI to show
@@ -36,6 +46,7 @@ const ProductsFilter = () => {
 
   // Stick the filter while scrolling down
   useEffect(() => {
+    if (!productsData.length) return;
     const nav = document.querySelector('nav');
     const productsFilter = document.querySelector('.products-filter');
     const navHeight = nav.getBoundingClientRect().height; //nav's height
@@ -60,7 +71,8 @@ const ProductsFilter = () => {
     return () => filterObserver.disconnect();
   }, []);
 
-  // console.log('render', searchName, price, isSearching);
+  // console.log('render', searchName, priceInput, searchInput, filterInput);
+  console.log(isChanging);
 
   return (
     <div
@@ -76,15 +88,15 @@ const ProductsFilter = () => {
             <input
               type="text"
               placeholder="Search"
-              defaultValue={searchName}
+              value={isChanging ? searchInput : searchName}
               className=" w-full bg-gray-200 rounded-full placeholder:text-sm py-1 pl-7 outline-none border hover:border-amber-200 focus:border-amber-400 focus:bg-gray-50"
               onChange={(e) => {
+                setSearchInput(e.target.value);
                 debounceInput('searchName', e.target.value);
               }}
             />
           </div>
         </div>
-        {isSearching && <SearchSpin />}
 
         {/* Select options */}
         <div className="grid grid-cols-2 gap-4 items-start pt-4 md:flex md:flex-col md:items-center">
@@ -203,17 +215,18 @@ const ProductsFilter = () => {
             <input
               id="price-range"
               type="range"
-              defaultValue={price}
+              value={priceInput}
               min="0"
               max={maxPrice + 10}
               step="10"
               className="w-full h-2 bg-gray-300 rounded-lg cursor-pointer outline-none mx-2 md:mx-0 md:my-2"
               onChange={(e) => {
+                setPriceInput(+e.target.value);
                 debounceInput('price', +e.target.value);
               }}
             />
             <p className="min-w-[60px] md:text-left">
-              {`${price.toLocaleString('en-US', {
+              {`${priceInput.toLocaleString('en-US', {
                 style: 'currency',
                 currency: 'USD',
                 maximumFractionDigits: 0,
@@ -225,11 +238,16 @@ const ProductsFilter = () => {
         <div className="w-full max-w-[300px] mx-auto flex justify-center">
           <p
             className="cursor-pointer underline active:text-amber-300"
-            onClick={() => dispatch(productsAction.clearFilter())}
+            onClick={() => {
+              dispatch(productsAction.clearFilter());
+              setPriceInput(maxPrice);
+              setSearchInput('');
+            }}
           >
             Clear All Filters
           </p>
         </div>
+        {isChanging && <SearchSpin />}
       </div>
     </div>
   );
