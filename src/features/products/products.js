@@ -130,6 +130,8 @@ const productsSlice = createSlice({
         payload.forEach((product) => (product.price = product.price / 100));
         // set data
         state.productsData = payload;
+        // update filter products
+        state.filterProducts = payload;
         // find the max price
         state.maxPrice = payload
           .map((item) => item.price)
@@ -141,13 +143,6 @@ const productsSlice = createSlice({
           }, 0);
         // set price in filter input = max price
         if (!state.filterInput.price) state.filterInput.price = state.maxPrice;
-        // update filter products
-        state.filterProducts = filterHandler(
-          state.filterInput,
-          state.productsData,
-          state.sortType,
-          state.maxPrice
-        );
       })
       .addCase(fetchProductsData.rejected, (state, { payload }) => {
         state.loading = false;
