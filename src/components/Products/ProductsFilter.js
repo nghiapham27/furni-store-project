@@ -44,39 +44,10 @@ const ProductsFilter = () => {
     });
   }, [productsData]);
 
-  // Stick the filter while scrolling down
-  useEffect(() => {
-    if (!productsData.length) return;
-    const nav = document.querySelector('nav');
-    const productsFilter = document.querySelector('.products-filter');
-    const navHeight = nav.getBoundingClientRect().height; //nav's height
-    const stickyFilter = function (entries, observer) {
-      const [entry] = entries;
-      // toggle state when moving out filter
-      if (!entry.isIntersecting) {
-        // set stick true & unobserve
-        setStick(true);
-        observer.unobserve(productsFilter);
-      } else setStick(false);
-    };
-    //Create the observer
-    const filterObserver = new IntersectionObserver(stickyFilter, {
-      root: null,
-      threshold: 0,
-      rootMargin: `-${navHeight + 32}px`,
-    });
-    //Observe header
-    filterObserver.observe(productsFilter);
-    // cleanup function
-    return () => filterObserver.disconnect();
-  }, []);
+  // console.log(filterMenu);
 
   return (
-    <div
-      className={`products-filter w-full pb-4 md:px-0 ${
-        stick ? 'md:sticky md:top-20' : ''
-      }`}
-    >
+    <div className={`md:sticky md:top-24 w-full pb-4 md:px-0 `}>
       <div className="text-center">
         {/* Search */}
         <div className="flex justify-center">
