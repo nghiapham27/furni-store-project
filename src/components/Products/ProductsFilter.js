@@ -44,8 +44,6 @@ const ProductsFilter = () => {
     });
   }, [productsData]);
 
-  // console.log(filterMenu);
-
   return (
     <div className={`md:sticky md:top-24 w-full pb-4 md:px-0 `}>
       <div className="text-center">
